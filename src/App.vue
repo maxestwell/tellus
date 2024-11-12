@@ -6,7 +6,7 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
-  <div id="app">
+  <div>
     <router-view />
   </div>
 </template>
@@ -15,7 +15,7 @@ import { RouterLink, RouterView } from 'vue-router'
 header {
   width: 100%;
   line-height: 1.5;
-  max-height: 100vh;
+  /* max-height: 100vh; */
 }
 
 .logo {

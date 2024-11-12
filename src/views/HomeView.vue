@@ -2,7 +2,8 @@
 import { ref, onMounted } from 'vue'
 import TheTitle from '../components/TheTitle.vue'
 import TheNav from '../components/TheNav.vue'
-import TheWelcome from '../components/TheWelcome.vue'
+import Parent from '../components/AudioContainer.vue'
+import Random from '../components/Random.vue'
 
 const headerTitle = ref('Default Title')
 
@@ -13,12 +14,24 @@ onMounted(() => {
 
 <template>
   <header>
-    <TheTitle :title="headerTitle" />
+    <div class="title-container">
+      <TheTitle :title="headerTitle" />
+      <h2>Id rather loose a...</h2>
+    </div>
     <TheNav />
   </header>
   <div>
-    <TheWelcome />
+    <Random />
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.title-container {
+  display: flex;
+  align-items: center;
+}
+
+.title-container h2 {
+  margin-left: 5rem; /* Adjust the margin as needed */
+}
+</style>

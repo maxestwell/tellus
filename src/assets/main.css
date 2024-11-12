@@ -5,6 +5,11 @@
   margin: 0 auto;
   padding: 2rem;
   font-weight: normal;
+  height: 100vh;
+}
+
+#app > div {
+  height: 100%;
 }
 
 header {
@@ -42,16 +47,16 @@ h1 {
 a,
 .green {
   text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
+  color: #0033ff;
   transition: 0.4s;
   padding: 3px;
 }
 
-@media (hover: hover) {
+/* @media (hover: hover) {
   a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
+    background-color: #0033ff;
   }
-}
+} */
 
 /* @media (min-width: 1024px) {
   body {

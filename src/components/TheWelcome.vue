@@ -5,7 +5,7 @@ import ToolingIcon from './icons/IconTooling.vue'
 import EcosystemIcon from './icons/IconEcosystem.vue'
 import CommunityIcon from './icons/IconCommunity.vue'
 import SupportIcon from './icons/IconSupport.vue'
-import AudioPlayer from '../components/AudioPlayer.vue'
+import Parent from './AudioContainer.vue'
 </script>
 
 <template>
@@ -14,10 +14,10 @@ import AudioPlayer from '../components/AudioPlayer.vue'
       <DocumentationIcon />
     </template>
     <template #heading>Documentation</template>
-    <AudioPlayer />
-    <audio controls>
+    <Parent />
+    <!-- <audio controls>
       <source src="../assets/recordings/archie.mp3" />
-    </audio>
+    </audio> -->
   </WelcomeItem>
 
   <WelcomeItem>
