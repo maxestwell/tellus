@@ -25,6 +25,38 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/ProfileView.vue'),
     },
+    {
+      path: '/question',
+      name: 'question',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/QuestionView.vue'),
+    },
+    {
+      path: '/upload',
+      name: 'upload',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/UploadView.vue'),
+    },
+    {
+      path: '/submit',
+      name: 'submit',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/SubmissionView.vue'),
+    },
+    {
+      path: '/confirmation',
+      name: 'confirm',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/ConfirmationView.vue'),
+    },
   ],
 })
 

@@ -16,22 +16,17 @@ onMounted(() => {
   <header>
     <div class="title-container">
       <TheTitle :title="headerTitle" />
-      <h2>Id rather loose a...</h2>
     </div>
     <TheNav />
   </header>
   <div>
+    <h2>I'd rather loose a...</h2>
     <Random />
   </div>
 </template>
 
 <style scoped>
-.title-container {
-  display: flex;
-  align-items: center;
-}
-
-.title-container h2 {
-  margin-left: 5rem; /* Adjust the margin as needed */
+h2 {
+  text-align: center;
 }
 </style>

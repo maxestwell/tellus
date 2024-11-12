@@ -59,5 +59,6 @@ onUnmounted(() => {
   border-radius: 20em;
   padding: 0px 50px;
   text-align: center;
+  width: fit-content;
 }
 </style>

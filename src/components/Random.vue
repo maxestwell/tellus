@@ -1,13 +1,21 @@
+<script setup>
+import GridParent from '../components/GridParent.vue'
+</script>
+
 <template>
   <div class="random">
     <div class="choices">
       <div class="option1" @click="playRandomSound(1)">
-        <img src="@/assets/images/hand.png" alt="Hand" />
-        <p>Hand</p>
+        <div class="addemoji">
+          <GridParent />
+        </div>
+        <div class="emoji">🖐️</div>
       </div>
       <div class="option2" @click="playRandomSound(2)">
-        <img src="@/assets/images/foot.png" alt="Foot" />
-        <p>Foot</p>
+        <div class="addemoji">
+          <GridParent />
+        </div>
+        <div class="emoji">🦶</div>
       </div>
     </div>
     <div class="stop-button" @click="stopSound" :class="{ disabled: !isPlaying }">Stop</div>
@@ -95,26 +103,43 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: 60vh; /* Full viewport height */
+}
+
+.addemoji {
+  position: absolute;
 }
 
 .choices {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-rows: auto;
   width: 100%;
-  flex-grow: 1; /* Allow choices to grow and fill the remaining space */
+  height: 100%;
 }
 
 .choices div {
-  width: 50%;
   cursor: pointer;
   transition: transform 0.2s;
-  font-size: 24px;
   padding: 10px 20px;
-  margin: 5px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.option1 {
+  /* background-color: #ffc800; */
+  border: 2px solid #ffc800;
+}
+
+.option2 {
+  /* background-color: #28a745; */
+  border: 2px solid #28a745;
+}
+
+.emoji {
+  font-size: 48px;
 }
 
 .choices div:hover {
@@ -122,14 +147,20 @@ export default {
 }
 
 .stop-button {
+  font-family: 'gridlite-pe-variable', sans-serif;
+  font-variation-settings:
+    'wght' 700,
+    'BACK' 0,
+    'RECT' 0,
+    'ELSH' 4;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
   margin: 5px;
-  background-color: #ff3300;
+  background-color: #007bff;
   color: white;
   text-align: center;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   user-select: none;
 }
 
@@ -137,6 +168,7 @@ export default {
   cursor: not-allowed;
   opacity: 0.6;
 }
+
 .sound-link {
   margin-top: 10px;
 }

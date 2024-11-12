@@ -14,24 +14,34 @@ onMounted(() => {
   <header>
     <div class="title-container">
       <TheTitle :title="headerTitle" />
-      <h2>a_bit_intimidated</h2>
     </div>
     <TheNav />
   </header>
   <div class="about">
-    <h3>
-      A curated audio archive of micro-interviews based around the 'Would you rather…?' concept.
-    </h3>
+    <h2>@a_bit_intimidated</h2>
+    <h3>bio</h3>
+    <p>
+      exploring the vast, digital unknown. Somewhere between the chaos of dial-up and the promise of
+      something bigger.
+    </p>
   </div>
 </template>
 
 <style scoped>
 .title-container {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
-.title-container h2 {
-  margin-left: 1rem; /* Adjust the margin as needed */
+h2 {
+  font-family: 'gridlite-pe-variable', sans-serif;
+  font-variation-settings:
+    'wght' 700,
+    'BACK' 0,
+    'RECT' 0,
+    'ELSH' 4;
+  font-size: 1.5rem;
+  margin: 0;
 }
 </style>

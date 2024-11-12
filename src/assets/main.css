@@ -6,18 +6,33 @@
   padding: 2rem;
   font-weight: normal;
   height: 100vh;
+  width: 100vw;
 }
+
+/* .about {
+  background-image: url('@/assets/images/home_square.jpg');
+  background-size: cover;
+  background-position: center;
+} */
 
 #app > div {
   height: 100%;
 }
 
 header {
+  width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  /* padding: 1rem; */
+}
+
+header div {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 }
 
 a {
@@ -25,6 +40,24 @@ a {
   font-variation-settings:
     'wght' 500,
     'slnt' -13,
+    'ital' 0,
+    'BORD' 300;
+}
+
+h3 {
+  font-family: 'adapter-mono-pe-variable', sans-serif;
+  font-variation-settings:
+    'wght' 600,
+    'slnt' 0,
+    'ital' 0,
+    'BORD' 300;
+}
+
+p {
+  font-family: 'adapter-mono-pe-variable', sans-serif;
+  font-variation-settings:
+    'wght' 400,
+    'slnt' 0,
     'ital' 0,
     'BORD' 300;
 }
@@ -40,9 +73,24 @@ h2 {
 }
 
 h1 {
-  font-size: 5rem;
+  font-size: 3rem;
   margin: 0;
 }
+
+/* h2 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+h4 {
+  font-size: 1.25rem;
+  margin: 0;
+} */
 
 a,
 .green {
@@ -58,15 +106,22 @@ a,
   }
 } */
 
-/* @media (min-width: 1024px) {
+@media (min-width: 1024px) {
   body {
     display: flex;
     place-items: center;
   }
 
-  #app {
+  /* #app {
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 0 2rem;
+  } */
+
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
   }
-} */
+}
