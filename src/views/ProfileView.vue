@@ -24,6 +24,8 @@ onMounted(() => {
       exploring the vast, digital unknown. Somewhere between the chaos of dial-up and the promise of
       something bigger.
     </p>
+    <h3>stickers</h3>
+    <img src="/src/assets/images/sticker.png" alt="sticker" />
   </div>
 </template>
 
