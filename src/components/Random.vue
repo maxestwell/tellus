@@ -130,12 +130,12 @@ export default {
 
 .option1 {
   /* background-color: #ffc800; */
-  border: 2px solid #ffc800;
+  border: 2px solid #000000;
 }
 
 .option2 {
   /* background-color: #28a745; */
-  border: 2px solid #28a745;
+  border: 2px solid #000000;
 }
 
 .emoji {
