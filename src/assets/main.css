@@ -25,7 +25,12 @@ header {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  /* padding: 1em 0em; */
   /* padding: 1rem; */
+}
+
+header > div {
+  padding: 1em 0em;
 }
 
 header div {
@@ -47,7 +52,7 @@ a {
 h3 {
   font-family: 'adapter-mono-pe-variable', sans-serif;
   font-variation-settings:
-    'wght' 600,
+    'wght' 300,
     'slnt' 0,
     'ital' 0,
     'BORD' 300;
@@ -110,6 +115,11 @@ a,
   body {
     display: flex;
     place-items: center;
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin: 0;
   }
 
   /* #app {

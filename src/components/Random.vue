@@ -114,6 +114,7 @@ export default {
 .choices {
   display: grid;
   grid-template-rows: auto;
+  gap: 1em;
   width: 100%;
   height: 100%;
 }
@@ -149,7 +150,7 @@ export default {
 .stop-button {
   font-family: 'gridlite-pe-variable', sans-serif;
   font-variation-settings:
-    'wght' 700,
+    'wght' 900,
     'BACK' 0,
     'RECT' 0,
     'ELSH' 4;
@@ -157,8 +158,8 @@ export default {
   font-size: 16px;
   cursor: pointer;
   margin: 5px;
-  background-color: #007bff;
-  color: white;
+  background-color: #f2f2f2;
+  color: black;
   text-align: center;
   /* border-radius: 5px; */
   user-select: none;
@@ -166,7 +167,7 @@ export default {
 
 .stop-button.disabled {
   cursor: not-allowed;
-  opacity: 0.6;
+  opacity: 0.3;
 }
 
 .sound-link {
