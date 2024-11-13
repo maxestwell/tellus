@@ -1,5 +1,8 @@
 # tellus
 
+![qr-code (1)](https://github.com/user-attachments/assets/791ecc47-4c6e-4085-96f1-77ec36d75021)
+
+
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
