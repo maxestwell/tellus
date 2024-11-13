@@ -40,10 +40,7 @@ export default {
 
   <div class="submission-page">
     <h1>Review Your Submission</h1>
-    <p>
-      <strong>Question:</strong> Would you rather experience the 90s internet forever or the 2000s
-      internet forever?
-    </p>
+    <p><strong>Question:</strong> Would you rather loose a hand or a foot?</p>
     <p><strong>Your Answer:</strong> {{ $route.query.answer }}</p>
     <p><strong>Uploaded File:</strong> {{ file?.name || 'No file uploaded' }}</p>
     <button @click="submitResponse">Submit</button>
