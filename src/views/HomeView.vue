@@ -2,7 +2,6 @@
 import { ref, onMounted } from 'vue'
 import TheTitle from '../components/TheTitle.vue'
 import TheNav from '../components/TheNav.vue'
-import Parent from '../components/AudioContainer.vue'
 import Random from '../components/Random.vue'
 
 const headerTitle = ref('Default Title')
