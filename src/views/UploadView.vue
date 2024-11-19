@@ -32,16 +32,18 @@ export default {
 </script>
 
 <template>
-  <header>
-    <TheTitle :title="headerTitle" />
-    <TheNav />
-  </header>
+  <div class="views">
+    <header>
+      <TheTitle :title="headerTitle" />
+      <TheNav />
+    </header>
 
-  <div class="upload-page">
-    <h1>Upload Your Response</h1>
-    <p>Your answer: {{ $route.query.answer }}</p>
-    <input type="file" @change="handleFileUpload" accept="audio/*, text/plain" />
-    <button :disabled="!file" @click="goToSubmit">Next</button>
+    <div class="upload-page">
+      <h1>Upload Your Response</h1>
+      <p>Your answer: {{ $route.query.answer }}</p>
+      <input type="file" @change="handleFileUpload" accept="audio/*, text/plain" />
+      <button :disabled="!file" @click="goToSubmit">Next</button>
+    </div>
   </div>
 </template>
 

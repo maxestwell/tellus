@@ -2,31 +2,6 @@
 import GridParent from '../components/GridParent.vue'
 </script>
 
-<template>
-  <div class="random">
-    <div class="choices">
-      <div class="option1" @click="playRandomSound(1)">
-        <div class="addemoji">
-          <GridParent />
-        </div>
-        <div class="emoji">🖐️</div>
-      </div>
-      <div class="option2" @click="playRandomSound(2)">
-        <div class="addemoji">
-          <GridParent />
-        </div>
-        <div class="emoji">🦶</div>
-      </div>
-    </div>
-    <div class="stop-button" @click="stopSound" :class="{ disabled: !isPlaying }">Stop</div>
-
-    <!-- Display link if a sound is playing -->
-    <div v-if="currentSoundLink" class="sound-link">
-      <a :href="currentSoundLink">Profile</a>
-    </div>
-  </div>
-</template>
-
 <script>
 import sound1 from '@/assets/recordings/archie.mp3'
 import sound2 from '@/assets/recordings/grace.mp3'
@@ -50,9 +25,17 @@ export default {
       isPlaying: false,
       lastPlayedIndex: { 1: null, 2: null }, // Track last played index for each group
       currentSoundLink: null, // Store the link for the currently playing sound
+      currentGroup: null, // Track the current playing group
     }
   },
   methods: {
+    togglePlayPause(group) {
+      if (this.isPlaying && this.currentGroup === group) {
+        this.stopSound()
+      } else {
+        this.playRandomSound(group)
+      }
+    },
     playRandomSound(group) {
       // Choose the appropriate sound group
       const sounds = group === 1 ? this.soundsGroup1 : this.soundsGroup2
@@ -74,6 +57,7 @@ export default {
       this.audio = new Audio(selectedSound.src)
       this.audio.play()
       this.isPlaying = true
+      this.currentGroup = group
 
       // Set the link for the currently playing sound
       this.currentSoundLink = selectedSound.link
@@ -82,6 +66,7 @@ export default {
       this.audio.onended = () => {
         this.isPlaying = false
         this.currentSoundLink = null // Hide link when audio ends
+        this.currentGroup = null
       }
     },
     stopSound() {
@@ -91,11 +76,46 @@ export default {
         this.audio.currentTime = 0
         this.isPlaying = false
         this.currentSoundLink = null // Hide link when stopped
+        this.currentGroup = null
       }
     },
   },
 }
 </script>
+
+<template>
+  <div class="random">
+    <div class="choices">
+      <a class="button button1" @click="togglePlayPause(1)">
+        <!-- <div class="addemoji">
+          <GridParent />
+        </div> -->
+        <div class="bcontent">
+          <div class="emoji">🖐️</div>
+          <div class="status">{{ isPlaying && currentGroup === 1 ? 'Pause' : 'Play' }}</div>
+        </div>
+      </a>
+
+      <div class="bcontent">
+        <h2>I'd rather loose a...</h2>
+      </div>
+      <a class="button button2" @click="togglePlayPause(2)">
+        <!-- <div class="addemoji">
+          <GridParent />
+        </div> -->
+        <div class="bcontent">
+          <div class="emoji">🦶</div>
+          <div class="status">{{ isPlaying && currentGroup === 2 ? 'Pause' : 'Play' }}</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Display link if a sound is playing -->
+    <div v-if="currentSoundLink" class="sound-link">
+      <router-link :to="currentSoundLink">Profile</router-link>
+    </div>
+  </div>
+</template>
 
 <style scoped>
 .random {
@@ -104,7 +124,7 @@ export default {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 60vh; /* Full viewport height */
+  height: 100%; /* Full viewport height */
 }
 
 .addemoji {
@@ -113,13 +133,13 @@ export default {
 
 .choices {
   display: grid;
-  grid-template-rows: auto;
+  grid-template-rows: 4fr 1fr 4fr;
   gap: 1em;
   width: 100%;
   height: 100%;
 }
 
-.choices div {
+/* .choices div {
   cursor: pointer;
   transition: transform 0.2s;
   padding: 10px 20px;
@@ -127,25 +147,59 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+} */
+
+.button {
+  background-color: #04aa6d; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  /* margin: 4px 2px; */
+  transition-duration: 0.4s;
+  cursor: pointer;
 }
 
-.option1 {
-  /* background-color: #ffc800; */
+.button1 {
+  background-color: white;
+  color: black;
   border: 2px solid #000000;
 }
 
-.option2 {
-  /* background-color: #28a745; */
+.button1:hover {
+  background-color: #04aa6d;
+  color: white;
+}
+
+.button2 {
+  background-color: white;
+  color: black;
   border: 2px solid #000000;
+}
+
+.button2:hover {
+  background-color: #008cba;
+  color: white;
+}
+
+.bcontent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
 }
 
 .emoji {
   font-size: 48px;
 }
 
-.choices div:hover {
+/* .choices div:hover {
   transform: scale(1.05);
-}
+} */
 
 .stop-button {
   font-family: 'gridlite-pe-variable', sans-serif;

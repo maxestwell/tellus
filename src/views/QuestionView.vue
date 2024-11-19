@@ -17,34 +17,46 @@ const selectAnswer = (answer) => {
 </script>
 
 <template>
-  <header>
-    <TheTitle :title="headerTitle" />
-    <TheNav />
-  </header>
-
-  <div class="question-page">
-    <h1>The Current Question</h1>
-    <h3>Would you rather loose a hand or a foot?</h3>
-    <div class="choices">
-      <button @click="selectAnswer('a hand?!')">hand 🖐️</button>
-      <button @click="selectAnswer('a foot?!')">foot 🦶</button>
+  <div class="views">
+    <header>
+      <TheTitle :title="headerTitle" />
+      <TheNav />
+    </header>
+    <div class="question-page">
+      <div class="choices">
+        <div>
+          <h3>Would you rather loose a...</h3>
+        </div>
+        <button @click="selectAnswer('a hand?!')">hand 🖐️</button>
+        <div>
+          <h3>or a</h3>
+        </div>
+        <button @click="selectAnswer('a foot?!')">foot 🦶</button>
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
+.views {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
 .question-page {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* height: 100vh; */
+  height: 100%;
   /* text-align: center; */
 }
 
 .choices {
   display: grid;
-  grid-template-rows: auto;
+  grid-template-rows: 1fr 4fr 1fr 4fr;
   width: 100%;
   height: 100%;
 }
@@ -52,7 +64,7 @@ const selectAnswer = (answer) => {
 .choices div {
   cursor: pointer;
   transition: transform 0.2s;
-  padding: 10px 20px;
+  /* padding: 10px 20px; */
   display: flex;
   flex-direction: column;
   justify-content: center;

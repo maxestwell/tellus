@@ -12,14 +12,13 @@ onMounted(() => {
 </script>
 
 <template>
-  <header>
-    <div class="title-container">
-      <TheTitle :title="headerTitle" />
-    </div>
-    <TheNav />
-  </header>
-  <div>
-    <h2>I'd rather loose a...</h2>
+  <div class="views">
+    <header>
+      <div class="title-container">
+        <TheTitle :title="headerTitle" />
+      </div>
+      <TheNav />
+    </header>
     <Random />
   </div>
 </template>

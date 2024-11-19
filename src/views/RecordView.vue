@@ -11,15 +11,17 @@ onMounted(() => {
 </script>
 
 <template>
-  <header>
-    <TheTitle :title="headerTitle" />
-    <TheNav />
-  </header>
-  <div class="about">
-    <h1>Tellus</h1>
-    <h3>
-      A curated audio archive of micro-interviews based around the 'Would you rather…?' concept.
-    </h3>
+  <div class="views">
+    <header>
+      <TheTitle :title="headerTitle" />
+      <TheNav />
+    </header>
+    <div class="about">
+      <h1>Tellus</h1>
+      <h3>
+        A curated audio archive of micro-interviews based around the 'Would you rather…?' concept.
+      </h3>
+    </div>
   </div>
 </template>
 

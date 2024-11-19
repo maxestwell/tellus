@@ -33,18 +33,20 @@ export default {
 </script>
 
 <template>
-  <header>
-    <TheTitle :title="headerTitle" />
-    <TheNav />
-  </header>
+  <div class="views">
+    <header>
+      <TheTitle :title="headerTitle" />
+      <TheNav />
+    </header>
 
-  <div class="submission-page">
-    <h1>Review Your Submission</h1>
-    <p><strong>Question:</strong> Would you rather loose a hand or a foot?</p>
-    <p><strong>Your Answer:</strong> {{ $route.query.answer }}</p>
-    <p><strong>Uploaded File:</strong> {{ file?.name || 'No file uploaded' }}</p>
-    <button @click="submitResponse">Submit</button>
-    <button @click="$router.push('/upload')">Go Back</button>
+    <div class="submission-page">
+      <h1>Review Your Submission</h1>
+      <p><strong>Question:</strong> Would you rather loose a hand or a foot?</p>
+      <p><strong>Your Answer:</strong> {{ $route.query.answer }}</p>
+      <p><strong>Uploaded File:</strong> {{ file?.name || 'No file uploaded' }}</p>
+      <button @click="submitResponse">Submit</button>
+      <button @click="$router.push('/upload')">Go Back</button>
+    </div>
   </div>
 </template>
 

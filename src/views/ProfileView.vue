@@ -11,23 +11,25 @@ onMounted(() => {
 </script>
 
 <template>
-  <header>
-    <div class="title-container">
-      <TheTitle :title="headerTitle" />
+  <div class="views">
+    <header>
+      <div class="title-container">
+        <TheTitle :title="headerTitle" />
+      </div>
+      <TheNav />
+    </header>
+    <div class="profile">
+      <h2>@a_bit_intimidated</h2>
+      <h3>bio</h3>
+      <p>
+        exploring the vast, digital unknown. Somewhere between the chaos of dial-up and the promise
+        of something bigger.
+      </p>
+      <h3>stickers</h3>
+      <img src="/src/assets/images/sticker.png" alt="sticker" />
     </div>
-    <TheNav />
-  </header>
-  <div class="about">
-    <h2>@a_bit_intimidated</h2>
-    <h3>bio</h3>
-    <p>
-      exploring the vast, digital unknown. Somewhere between the chaos of dial-up and the promise of
-      something bigger.
-    </p>
-    <h3>stickers</h3>
-    <img src="/src/assets/images/sticker.png" alt="sticker" />
+    <div class="profileimg"></div>
   </div>
-  <div class="profileimg"></div>
 </template>
 
 <style scoped>
@@ -49,9 +51,10 @@ onMounted(() => {
   justify-content: flex-start;
 }
 
-.about {
+.profile {
   position: relative; /* Ensure the about section is positioned above the background image */
   z-index: 1; /* Ensure the about section is above the background image */
+  height: 100%;
 }
 
 h2 {

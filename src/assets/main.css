@@ -1,12 +1,30 @@
 @import './base.css';
 
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* body {
+  min-height: 100vh;
+} */
+
 #app {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
   font-weight: normal;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
+}
+
+.views {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 /* .about {
@@ -20,6 +38,7 @@
 }
 
 header {
+  /* position: absolute; */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -29,9 +48,9 @@ header {
   /* padding: 1rem; */
 }
 
-header > div {
+/* header > div {
   padding: 1em 0em;
-}
+} */
 
 header div {
   display: flex;
@@ -102,7 +121,7 @@ a,
   text-decoration: none;
   color: #0033ff;
   transition: 0.4s;
-  padding: 3px;
+  /* padding: 3px; */
 }
 
 /* @media (hover: hover) {
@@ -132,6 +151,6 @@ a,
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    /* padding: 1rem; */
   }
 }

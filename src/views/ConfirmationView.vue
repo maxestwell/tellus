@@ -17,16 +17,17 @@ const selectAnswer = (answer) => {
 </script>
 
 <template>
-  <header>
-    <TheTitle :title="headerTitle" />
-    <TheNav />
-  </header>
-
-  <div class="confirmation-page">
-    <h1>Thank You!</h1>
-    <p>Your response has been submitted to the “Would You Rather?” Archive.</p>
-    <p>ALSO, here's a sticker to add to your profile!</p>
-    <button @click="$router.push('/')">Return Home</button>
+  <div class="views">
+    <header>
+      <TheTitle :title="headerTitle" />
+      <TheNav />
+    </header>
+    <div class="confirmation-page">
+      <h1>Thank You!</h1>
+      <p>Your response has been submitted to the “Would You Rather?” Archive.</p>
+      <p>ALSO, here's a sticker to add to your profile!</p>
+      <button @click="$router.push('/')">Return Home</button>
+    </div>
   </div>
 </template>
 
