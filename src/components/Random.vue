@@ -87,32 +87,34 @@ export default {
   <div class="random">
     <div class="choices">
       <a class="button button1" @click="togglePlayPause(1)">
-        <!-- <div class="addemoji">
-          <GridParent />
-        </div> -->
         <div class="bcontent">
-          <div class="emoji">🖐️</div>
-          <div class="status">{{ isPlaying && currentGroup === 1 ? 'Pause' : 'Play' }}</div>
+          <p class="choice">hand 🖐️</p>
+          <p class="status">{{ isPlaying && currentGroup === 1 ? 'Stop ⏹️' : 'Play ▶️' }}</p>
+          <!-- Display link if a sound is playing and currentGroup is 1 -->
+          <div class="sound-link-container">
+            <div v-if="currentSoundLink && currentGroup === 1" class="sound-link">
+              <router-link :to="currentSoundLink">Profile</router-link>
+            </div>
+          </div>
         </div>
       </a>
 
       <div class="bcontent">
-        <h2>I'd rather loose a...</h2>
+        <h2>I'd rather lose a...</h2>
       </div>
+
       <a class="button button2" @click="togglePlayPause(2)">
-        <!-- <div class="addemoji">
-          <GridParent />
-        </div> -->
         <div class="bcontent">
-          <div class="emoji">🦶</div>
-          <div class="status">{{ isPlaying && currentGroup === 2 ? 'Pause' : 'Play' }}</div>
+          <p class="choice">foot 🦶</p>
+          <p class="status">{{ isPlaying && currentGroup === 2 ? 'Stop ⏹️' : 'Play ▶️' }}</p>
+          <!-- Display link if a sound is playing and currentGroup is 2 -->
+          <div class="sound-link-container">
+            <div v-if="currentSoundLink && currentGroup === 2" class="sound-link">
+              <router-link :to="currentSoundLink">Profile</router-link>
+            </div>
+          </div>
         </div>
       </a>
-    </div>
-
-    <!-- Display link if a sound is playing -->
-    <div v-if="currentSoundLink" class="sound-link">
-      <router-link :to="currentSoundLink">Profile</router-link>
     </div>
   </div>
 </template>
@@ -127,33 +129,19 @@ export default {
   height: 100%; /* Full viewport height */
 }
 
-.addemoji {
-  position: absolute;
-}
-
 .choices {
   display: grid;
-  grid-template-rows: 4fr 1fr 4fr;
+  grid-template-rows: 6fr 1fr 6fr;
   gap: 1em;
   width: 100%;
   height: 100%;
 }
 
-/* .choices div {
-  cursor: pointer;
-  transition: transform 0.2s;
-  padding: 10px 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-} */
-
 .button {
   background-color: #04aa6d; /* Green */
   border: none;
   color: white;
-  padding: 16px 32px;
+  /* padding: 16px 32px; */
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -193,13 +181,9 @@ export default {
   height: 100%;
 }
 
-.emoji {
+.choice {
   font-size: 48px;
 }
-
-/* .choices div:hover {
-  transform: scale(1.05);
-} */
 
 .stop-button {
   font-family: 'gridlite-pe-variable', sans-serif;
@@ -215,7 +199,6 @@ export default {
   background-color: #f2f2f2;
   color: black;
   text-align: center;
-  /* border-radius: 5px; */
   user-select: none;
 }
 
@@ -224,7 +207,13 @@ export default {
   opacity: 0.3;
 }
 
+.sound-link-container {
+  position: relative;
+}
+
 .sound-link {
-  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>

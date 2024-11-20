@@ -25,7 +25,7 @@ const selectAnswer = (answer) => {
     <div class="question-page">
       <div class="choices">
         <div>
-          <h3>Would you rather loose a...</h3>
+          <h3>Would you rather lose a...</h3>
         </div>
         <button @click="selectAnswer('a hand?!')">hand 🖐️</button>
         <div>
