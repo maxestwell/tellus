@@ -1,82 +1,70 @@
-<script setup>
-import GridParent from '../components/GridParent.vue'
-</script>
-
 <script>
-import sound1 from '@/assets/recordings/archie.mp3'
-import sound2 from '@/assets/recordings/grace.mp3'
-import sound3 from '@/assets/recordings/polly.mp3'
-import sound4 from '@/assets/recordings/tavi.mp3'
-import sound5 from '@/assets/recordings/tim.mp3'
+import soundsData from '@/assets/data/sounds.json'
+
+const audioFiles = import.meta.glob('@/assets/recordings/*.mp3')
 
 export default {
   data() {
     return {
-      soundsGroup1: [
-        { src: sound1, link: '/profile' },
-        { src: sound2, link: '/profile' },
-      ],
-      soundsGroup2: [
-        { src: sound3, link: '/profile' },
-        { src: sound4, link: '/profile' },
-        { src: sound5, link: '/profile' },
-      ],
+      sounds: [],
       audio: null,
       isPlaying: false,
-      lastPlayedIndex: { 1: null, 2: null }, // Track last played index for each group
-      currentSoundLink: null, // Store the link for the currently playing sound
-      currentGroup: null, // Track the current playing group
+      lastPlayedIndex: null,
+      currentSoundLink: null,
     }
   },
+  created() {
+    this.sounds = soundsData.map((sound) => {
+      const audioModule = audioFiles[`/src/assets/recordings/${sound.src}`]
+      if (audioModule) {
+        return { ...sound, src: audioModule } // Store function
+      } else {
+        console.warn(`Audio file not found for ${sound.src}`)
+        return { ...sound, src: null }
+      }
+    })
+  },
   methods: {
-    togglePlayPause(group) {
-      if (this.isPlaying && this.currentGroup === group) {
+    togglePlayPause() {
+      if (this.isPlaying) {
         this.stopSound()
       } else {
-        this.playRandomSound(group)
+        this.playRandomSound()
       }
     },
-    playRandomSound(group) {
-      // Choose the appropriate sound group
-      const sounds = group === 1 ? this.soundsGroup1 : this.soundsGroup2
+    playRandomSound() {
       let randomIndex
-
-      // Ensure a new random sound is selected (not the same as last played)
       do {
-        randomIndex = Math.floor(Math.random() * sounds.length)
-      } while (randomIndex === this.lastPlayedIndex[group])
+        randomIndex = Math.floor(Math.random() * this.sounds.length)
+      } while (randomIndex === this.lastPlayedIndex)
 
-      // Update the last played index for this group
-      this.lastPlayedIndex[group] = randomIndex
-
-      // Stop any currently playing sound
-      this.stopSound()
-
-      // Get the selected sound and link
-      const selectedSound = sounds[randomIndex]
-      this.audio = new Audio(selectedSound.src)
-      this.audio.play()
-      this.isPlaying = true
-      this.currentGroup = group
-
-      // Set the link for the currently playing sound
+      const selectedSound = this.sounds[randomIndex]
+      this.lastPlayedIndex = randomIndex
       this.currentSoundLink = selectedSound.link
 
-      // Reset isPlaying when the audio finishes
-      this.audio.onended = () => {
-        this.isPlaying = false
-        this.currentSoundLink = null // Hide link when audio ends
-        this.currentGroup = null
+      if (selectedSound.src) {
+        selectedSound.src().then((module) => {
+          this.audio = new Audio(module.default)
+          console.log('Playing sound:', module.default)
+          this.audio
+            .play()
+            .then(() => {
+              this.isPlaying = true
+            })
+            .catch((error) => {
+              console.error('Error playing sound:', error)
+            })
+        })
+      } else {
+        console.error('No audio source found for:', selectedSound)
       }
     },
     stopSound() {
-      // Pause and reset the current audio if it exists
       if (this.audio) {
         this.audio.pause()
         this.audio.currentTime = 0
         this.isPlaying = false
-        this.currentSoundLink = null // Hide link when stopped
-        this.currentGroup = null
+        this.currentSoundLink = null
       }
     },
   },
@@ -85,37 +73,20 @@ export default {
 
 <template>
   <div class="random">
-    <div class="choices">
-      <a class="button button1" @click="togglePlayPause(1)">
-        <div class="bcontent">
-          <p class="choice">hand 🖐️</p>
-          <p class="status">{{ isPlaying && currentGroup === 1 ? 'Stop ⏹️' : 'Play ▶️' }}</p>
-          <!-- Display link if a sound is playing and currentGroup is 1 -->
-          <div class="sound-link-container">
-            <div v-if="currentSoundLink && currentGroup === 1" class="sound-link">
-              <router-link :to="currentSoundLink">Profile</router-link>
-            </div>
-          </div>
-        </div>
-      </a>
-
+    <h1>Would you rather?!...</h1>
+    <h2>...lose a...</h2>
+    <a class="button" @click="togglePlayPause">
       <div class="bcontent">
-        <h2>I'd rather lose a...</h2>
-      </div>
-
-      <a class="button button2" @click="togglePlayPause(2)">
-        <div class="bcontent">
-          <p class="choice">foot 🦶</p>
-          <p class="status">{{ isPlaying && currentGroup === 2 ? '⏹️' : 'Play ▶️' }}</p>
-          <!-- Display link if a sound is playing and currentGroup is 2 -->
-          <div class="sound-link-container">
-            <div v-if="currentSoundLink && currentGroup === 2" class="sound-link">
-              <router-link :to="currentSoundLink">Profile</router-link>
-            </div>
+        <!-- <p class="choice"></p> -->
+        <p class="status">{{ isPlaying ? 'Stop ⏹️' : 'Play ▶️' }}</p>
+        <!-- Display link if a sound is playing -->
+        <div class="sound-link-container">
+          <div v-if="currentSoundLink" class="sound-link">
+            <router-link :to="currentSoundLink">Profile</router-link>
           </div>
         </div>
-      </a>
-    </div>
+      </div>
+    </a>
   </div>
 </template>
 
@@ -130,17 +101,17 @@ export default {
 }
 
 .choices {
-  display: grid;
-  grid-template-rows: 6fr 1fr 6fr;
-  gap: 1em;
   width: 100%;
   height: 100%;
 }
 
 .button {
-  background-color: #04aa6d; /* Green */
-  border: none;
-  color: white;
+  width: 100%;
+  height: 100%;
+
+  background-color: white;
+  color: black;
+  border: 2px solid #000000;
   /* padding: 16px 32px; */
   text-align: center;
   text-decoration: none;
@@ -151,25 +122,8 @@ export default {
   cursor: pointer;
 }
 
-.button1 {
-  background-color: white;
-  color: black;
-  border: 2px solid #000000;
-}
-
-.button1:hover {
+.button:hover {
   background-color: #04aa6d;
-  color: white;
-}
-
-.button2 {
-  background-color: white;
-  color: black;
-  border: 2px solid #000000;
-}
-
-.button2:hover {
-  background-color: #008cba;
   color: white;
 }
 

@@ -12,7 +12,7 @@ onMounted(() => {
 })
 
 const selectAnswer = (answer) => {
-  router.push({ path: '/upload', query: { answer } })
+  router.push({ path: '/record', query: { answer } })
 }
 </script>
 

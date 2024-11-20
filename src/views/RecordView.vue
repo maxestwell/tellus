@@ -1,28 +1,45 @@
-<script setup>
-import { ref, onMounted } from 'vue'
-import TheTitle from '../components/TheTitle.vue'
-import TheNav from '../components/TheNav.vue'
-
-const headerTitle = ref('Default Title')
-
-onMounted(() => {
-  headerTitle.value = 'Tellus'
-})
+<script>
+export default {
+  name: 'RecordPage',
+  data() {
+    return {
+      file: null,
+    }
+  },
+  methods: {
+    handleFileUpload(event) {
+      this.file = event.target.files[0]
+    },
+    goToSubmit() {
+      this.$router.push({ path: '/submit', query: { answer: this.$route.query.answer } })
+    },
+  },
+}
 </script>
 
 <template>
   <div class="views">
-    <header>
-      <TheTitle :title="headerTitle" />
-      <TheNav />
-    </header>
-    <div class="about">
-      <h1>Tellus</h1>
-      <h3>
-        A curated audio archive of micro-interviews based around the 'Would you rather…?' concept.
-      </h3>
+    <div class="record-page">
+      <h1>Record Your Response</h1>
+      <p>Your answer: {{ $route.query.answer }}</p>
+      <input type="file" @change="handleFileUpload" accept="audio/*, text/plain" />
+      <button :disabled="!file" @click="goToSubmit">Next</button>
     </div>
   </div>
 </template>
 
 <style scoped></style>
+
+<style>
+.views {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.record-page {
+  height: 100%;
+}
+</style>

@@ -59,14 +59,14 @@ header div {
   justify-content: center;
 }
 
-a {
+/* a {
   font-family: 'adapter-mono-pe-variable', sans-serif;
   font-variation-settings:
     'wght' 500,
     'slnt' -13,
     'ital' 0,
     'BORD' 300;
-}
+} */
 
 h3 {
   font-family: 'adapter-mono-pe-variable', sans-serif;
@@ -87,7 +87,8 @@ p {
 }
 
 h1,
-h2 {
+h2,
+a {
   font-family: 'gridlite-pe-variable', sans-serif;
   font-variation-settings:
     'wght' 700,

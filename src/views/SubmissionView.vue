@@ -1,17 +1,3 @@
-<script setup>
-import { ref, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
-import TheTitle from '../components/TheTitle.vue'
-import TheNav from '../components/TheNav.vue'
-
-const headerTitle = ref('Default Title')
-const router = useRouter()
-
-onMounted(() => {
-  headerTitle.value = 'Tellus'
-})
-</script>
-
 <script>
 export default {
   name: 'SubmissionPage',
@@ -34,18 +20,13 @@ export default {
 
 <template>
   <div class="views">
-    <header>
-      <TheTitle :title="headerTitle" />
-      <TheNav />
-    </header>
-
     <div class="submission-page">
       <h1>Review Your Submission</h1>
       <p><strong>Question:</strong> Would you rather loose a hand or a foot?</p>
       <p><strong>Your Answer:</strong> {{ $route.query.answer }}</p>
       <p><strong>Uploaded File:</strong> {{ file?.name || 'No file uploaded' }}</p>
       <button @click="submitResponse">Submit</button>
-      <button @click="$router.push('/upload')">Go Back</button>
+      <button @click="$router.push('/record')">Go Back</button>
     </div>
   </div>
 </template>

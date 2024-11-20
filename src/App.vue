@@ -1,8 +1,6 @@
 <script setup>
 import { ref } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
-// import HelloWorld from './components/HelloWorld.vue'
-// import TheHeader from './components/TheTitle.vue'
 </script>
 
 <template>

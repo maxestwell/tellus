@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import { RouterLink } from 'vue-router'
-import { gsap } from 'gsap'
+import { useHoverEffectStore } from '@/stores/useHoverEffectStore'
 
 defineProps({
   title: {
@@ -11,36 +11,19 @@ defineProps({
 })
 
 const textElement = ref(null)
+const hoverEffectStore = useHoverEffectStore()
 
-const handleMouseEnter = () => {
-  if (textElement.value) {
-    gsap.to(textElement.value, {
-      duration: 0.3,
-      fontVariationSettings: "'wght' 700, 'BACK' 700, 'RECT' 700, 'ELSH' 4",
-    })
-  }
-}
-
-const handleMouseLeave = () => {
-  if (textElement.value) {
-    gsap.to(textElement.value, {
-      duration: 0.5,
-      fontVariationSettings: "'wght' 700, 'BACK' 0, 'RECT' 0, 'ELSH' 4",
-    })
-  }
-}
+let cleanupHoverEffects
 
 onMounted(() => {
   if (textElement.value) {
-    textElement.value.addEventListener('mouseenter', handleMouseEnter)
-    textElement.value.addEventListener('mouseleave', handleMouseLeave)
+    cleanupHoverEffects = hoverEffectStore.applyHoverEffects(textElement.value)
   }
 })
 
 onUnmounted(() => {
-  if (textElement.value) {
-    textElement.value.removeEventListener('mouseenter', handleMouseEnter)
-    textElement.value.removeEventListener('mouseleave', handleMouseLeave)
+  if (cleanupHoverEffects) {
+    cleanupHoverEffects()
   }
 })
 </script>
@@ -54,6 +37,14 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
+h1 {
+  font-family: 'gridlite-pe-variable', sans-serif;
+  font-variation-settings:
+    'wght' 700,
+    'BACK' 0,
+    'RECT' 0,
+    'ELSH' 4;
+}
 .rounded-border {
   border: 2px solid black;
   border-radius: 20em;

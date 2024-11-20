@@ -1,0 +1,92 @@
+[
+    {
+        "src": "archie.mp3",
+        "link": "/profile/archie",
+        "profile": [
+            {
+                "name": "archie",
+                "userName": "@versarchie",
+                "backgroundImage": "/cloudmtns.jpg",
+                "backgroundImageAlt": "Cloudy mountains",
+                "profileImage": "/hand.png",
+                "profileImageAlt": "Hand",
+                "font": "'Courier New', monospace",
+                "bio": "Jane is an artist who enjoys painting landscapes and reading novels.",
+                "sticker": "/sticker.png",
+                "stickerAlt": "Sticker"
+            }
+        ]
+    },
+    {
+        "src": "grace.mp3",
+        "link": "/profile/grace",
+        "profile": [
+            {
+                "name": "grace",
+                "userName": "@max_the_corolla",
+                "backgroundImage": "/cloudmtns.jpg",
+                "backgroundImageAlt": "Cloudy mountains",
+                "profileImage": "/hand.png",
+                "profileImageAlt": "Hand",
+                "font": "'Courier New', monospace",
+                "bio": "Jane is an artist who enjoys painting landscapes and reading novels.",
+                "sticker": "/sticker.png",
+                "stickerAlt": "Sticker"
+            }
+        ]
+    },
+    {
+        "src": "polly.mp3",
+        "link": "/profile/polly",
+        "profile": [
+            {
+                "name": "polly",
+                "userName": "@eggplant_polly",
+                "backgroundImage": "/cloudmtns.jpg",
+                "backgroundImageAlt": "Cloudy mountains",
+                "profileImage": "/ogre.png",
+                "profileImageAlt": "Ogre",
+                "font": "'Courier New', monospace",
+                "bio": "Jane is an artist who enjoys painting landscapes and reading novels.",
+                "sticker": "/sticker.png",
+                "stickerAlt": "Sticker"
+            }
+        ]
+    },
+    {
+        "src": "tavi.mp3",
+        "link": "/profile/tavi",
+        "profile": [
+            {
+                "name": "tavi",
+                "userName": "@tacotelfer",
+                "backgroundImage": "/cloudmtns.jpg",
+                "backgroundImageAlt": "Cloudy mountains",
+                "profileImage": "/hand.png",
+                "profileImageAlt": "Hand",
+                "font": "'Courier New', monospace",
+                "bio": "Jane is an artist who enjoys painting landscapes and reading novels.",
+                "sticker": "/sticker.png",
+                "stickerAlt": "Sticker"
+            }
+        ]
+    },
+    {
+        "src": "tim.mp3",
+        "link": "/profile/tim",
+        "profile": [
+            {
+                "name": "tim",
+                "userName": "@a_bit_intimidated",
+                "backgroundImage": "/cloudmtns.jpg",
+                "backgroundImageAlt": "Cloudy mountains",
+                "profileImage": "/mask.png",
+                "profileImageAlt": "Mask",
+                "font": "'Courier New', monospace",
+                "bio": "Jane is an artist who enjoys painting landscapes and reading novels.",
+                "sticker": "/sticker.png",
+                "stickerAlt": "Sticker"
+            }
+        ]
+    }
+]
