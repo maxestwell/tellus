@@ -106,7 +106,7 @@ export default {
       <a class="button button2" @click="togglePlayPause(2)">
         <div class="bcontent">
           <p class="choice">foot 🦶</p>
-          <p class="status">{{ isPlaying && currentGroup === 2 ? 'Stop ⏹️' : 'Play ▶️' }}</p>
+          <p class="status">{{ isPlaying && currentGroup === 2 ? '⏹️' : 'Play ▶️' }}</p>
           <!-- Display link if a sound is playing and currentGroup is 2 -->
           <div class="sound-link-container">
             <div v-if="currentSoundLink && currentGroup === 2" class="sound-link">
