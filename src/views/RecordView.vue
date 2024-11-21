@@ -35,11 +35,11 @@ export default {
       <TheTitle :title="headerTitle" />
       <TheNav />
     </header>
-    <div class="record-page">
+    <div class="record">
       <h1>Record Your Response</h1>
       <p>Your answer: {{ $route.query.answer }}</p>
-      <input type="file" @change="handleFileUpload" accept="audio/*, text/plain" />
-      <button :disabled="!file" @click="goToSubmit">Next</button>
+
+      <button @click="goToSubmit">Next</button>
     </div>
   </div>
 </template>
@@ -55,7 +55,8 @@ export default {
   height: 100%;
 }
 
-.record-page {
+.record {
   height: 100%;
+  width: 100%;
 }
 </style>

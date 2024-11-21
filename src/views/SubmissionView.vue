@@ -36,7 +36,7 @@ export default {
       <TheTitle :title="headerTitle" />
       <TheNav />
     </header>
-    <div class="submission-page">
+    <div class="submission">
       <h1>Review Your Submission</h1>
       <p><strong>Question:</strong> Would you rather loose a hand or a foot?</p>
       <p><strong>Your Answer:</strong> {{ $route.query.answer }}</p>
@@ -47,4 +47,17 @@ export default {
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.views {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.submission {
+  height: 100%;
+  width: 100%;
+}
+</style>

@@ -22,7 +22,7 @@ const selectAnswer = (answer) => {
       <TheTitle :title="headerTitle" />
       <TheNav />
     </header>
-    <div class="confirmation-page">
+    <div class="confirmation">
       <h1>Thank You!</h1>
       <p>Your response has been submitted to the “Would You Rather?” Archive.</p>
       <p>ALSO, here's a sticker to add to your profile!</p>
@@ -32,6 +32,19 @@ const selectAnswer = (answer) => {
 </template>
 
 <style scoped>
+.views {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.confirmation {
+  height: 100%;
+  width: 100%;
+}
+
 .question-page {
   display: flex;
   flex-direction: column;
@@ -47,8 +60,4 @@ button {
   font-size: 16px;
   cursor: pointer;
 }
-</style>
-
-<style>
-/* Retro style for buttons, frames, etc. */
 </style>

@@ -2,6 +2,7 @@
 import { ref, onMounted } from 'vue'
 import TheTitle from '../components/TheTitle.vue'
 import TheNav from '../components/TheNav.vue'
+import Intro from '../components/Intro.vue'
 
 const headerTitle = ref('Default Title')
 
@@ -16,26 +17,16 @@ onMounted(() => {
       <TheTitle :title="headerTitle" />
       <TheNav />
     </header>
-    <div class="about">
-      <h2>about</h2>
-      <h3>
-        A curated audio archive of micro-interviews based around the 'Would you rather…?' concept.
-      </h3>
+    <div class="intro">
+      <h2>
+        <Intro />
+      </h2>
     </div>
   </div>
 </template>
 
 <style scoped>
-.views {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.intro {
   height: 100%;
-}
-
-.about {
-  height: 100%;
-  width: 100%;
 }
 </style>
