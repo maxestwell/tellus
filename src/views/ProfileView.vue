@@ -13,8 +13,6 @@ onMounted(() => {
 <script>
 import profiles from '@/assets/data/sounds.json' // Same JSON file for both
 
-const images = import.meta.glob('@/assets/images/*')
-
 export default {
   props: {
     name: {
@@ -37,46 +35,26 @@ export default {
     )
     if (profileData) {
       this.profile = profileData.profile.find((profile) => profile.name === this.name)
-      const backgroundImagePath = `/src/assets/images${this.profile.backgroundImage}`
-      const profileImagePath = `/src/assets/images${this.profile.profileImage}`
-      const stickerImagePath = `/src/assets/images${this.profile.sticker}`
-      if (images[backgroundImagePath]) {
-        images[backgroundImagePath]().then((module) => {
-          this.backgroundImageUrl = module.default
-        })
-      } else {
-        console.warn(`Image not found for ${backgroundImagePath}`)
-      }
-      if (images[profileImagePath]) {
-        images[profileImagePath]().then((module) => {
-          this.profileImageUrl = module.default
-        })
-      } else {
-        console.warn(`Image not found for ${profileImagePath}`)
-      }
-      if (images[stickerImagePath]) {
-        images[stickerImagePath]().then((module) => {
-          this.stickerImageUrl = module.default
-        })
-      } else {
-        console.warn(`Image not found for ${stickerImagePath}`)
-      }
-    } else {
-      this.profile = {
-        name: 'Unknown',
-        backgroundImage: '/images/cloudmtns.jpg',
-        backgroundImageAlt: 'Default background image',
-        profileImage: '/images/hand.png',
-        profileImageAlt: 'Default profile image',
-        sticker: '/images/default-sticker.png',
-        stickerAlt: 'Default sticker',
-        font: 'Arial, sans-serif',
-        bio: 'This profile does not exist.',
-      }
-      this.backgroundImageUrl = new URL('/src/assets/images/cloudmtns.jpg', import.meta.url).href
-      this.profileImageUrl = new URL('/src/assets/images/hand.png', import.meta.url).href
-      this.stickerImageUrl = new URL('/src/assets/images/default-sticker.png', import.meta.url).href
+      this.backgroundImageUrl = `/tellus/images${this.profile.backgroundImage}`
+      this.profileImageUrl = `/tellus/images${this.profile.profileImage}`
+      this.stickerImageUrl = `/tellus/images${this.profile.sticker}`
     }
+    // else {
+    //   this.profile = {
+    //     name: 'Unknown',
+    //     backgroundImage: '/images/cloudmtns.jpg',
+    //     backgroundImageAlt: 'Default background image',
+    //     profileImage: '/images/hand.png',
+    //     profileImageAlt: 'Default profile image',
+    //     sticker: '/images/default-sticker.png',
+    //     stickerAlt: 'Default sticker',
+    //     font: 'Arial, sans-serif',
+    //     bio: 'This profile does not exist.',
+    //   }
+    //   this.backgroundImageUrl = new URL('/public/images/cloudmtns.jpg', import.meta.url).href
+    //   this.profileImageUrl = new URL('/public/images/hand.png', import.meta.url).href
+    //   this.stickerImageUrl = new URL('/public/images/default-sticker.png', import.meta.url).href
+    // }
   },
 }
 </script>

@@ -1,35 +1,27 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import HoverEffect from '@/components/HoverEffect.vue'
 import { RouterLink } from 'vue-router'
-import { useHoverEffectStore } from '@/stores/useHoverEffectStore'
-
-const hoverEffectStore = useHoverEffectStore()
-const linksContainer = ref(null) // Ref for the container holding links
-let cleanupFunctions = [] // Array for cleanup callbacks
-
-onMounted(() => {
-  if (linksContainer.value) {
-    // Select all RouterLink elements within the container
-    const links = linksContainer.value.querySelectorAll('a')
-    links.forEach((link) => {
-      const cleanup = hoverEffectStore.applyHoverEffects(link)
-      cleanupFunctions.push(cleanup)
-    })
-  }
-})
-
-onUnmounted(() => {
-  // Cleanup all event listeners
-  cleanupFunctions.forEach((cleanup) => cleanup())
-})
 </script>
 
 <template>
-  <div class="wrapper" ref="linksContainer">
+  <div class="wrapper">
     <nav>
-      <RouterLink to="/question">Submit</RouterLink>
-      <RouterLink to="/about">About</RouterLink>
-      <!-- <RouterLink to="/profile">Profile</RouterLink> -->
+      <RouterLink to="/question">
+        <HoverEffect
+          defaultSettings="'wght' 700, 'BACK' 0, 'RECT' 0, 'ELSH' 4"
+          hoverSettings="'wght' 500, 'BACK' 700, 'RECT' 700, 'ELSH' 4"
+        >
+          Submit
+        </HoverEffect>
+      </RouterLink>
+      <RouterLink to="/about">
+        <HoverEffect
+          defaultSettings="'wght' 700, 'BACK' 0, 'RECT' 0, 'ELSH' 4"
+          hoverSettings="'wght' 500, 'BACK' 700, 'RECT' 700, 'ELSH' 4"
+        >
+          About
+        </HoverEffect>
+      </RouterLink>
     </nav>
   </div>
 </template>
@@ -38,14 +30,6 @@ onUnmounted(() => {
 nav {
   display: flex;
   align-items: flex-end;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
 }
 
 nav a {

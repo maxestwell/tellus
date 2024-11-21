@@ -3,21 +3,23 @@ import { gsap } from 'gsap'
 
 export const useHoverEffectStore = defineStore('hoverEffect', {
   actions: {
-    applyHoverEffects(element) {
+    applyHoverEffects(element, defaultSettings, hoverSettings) {
       const handleMouseEnter = () => {
         if (element) {
+          console.log('Mouse enter:', element)
           gsap.to(element, {
-            duration: 0.2,
-            fontVariationSettings: "'wght' 500, 'BACK' 700, 'RECT' 700, 'ELSH' 4",
+            duration: 0.3,
+            fontVariationSettings: hoverSettings,
           })
         }
       }
 
       const handleMouseLeave = () => {
         if (element) {
+          console.log('Mouse leave:', element)
           gsap.to(element, {
-            duration: 0.2,
-            fontVariationSettings: "'wght' 700, 'BACK' 0, 'RECT' 0, 'ELSH' 4",
+            duration: 0.3,
+            fontVariationSettings: defaultSettings,
           })
         }
       }

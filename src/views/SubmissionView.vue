@@ -1,3 +1,15 @@
+<script setup>
+import { ref, onMounted } from 'vue'
+import TheTitle from '../components/TheTitle.vue'
+import TheNav from '../components/TheNav.vue'
+
+const headerTitle = ref('Default Title')
+
+onMounted(() => {
+  headerTitle.value = 'Tellus'
+})
+</script>
+
 <script>
 export default {
   name: 'SubmissionPage',
@@ -20,6 +32,10 @@ export default {
 
 <template>
   <div class="views">
+    <header>
+      <TheTitle :title="headerTitle" />
+      <TheNav />
+    </header>
     <div class="submission-page">
       <h1>Review Your Submission</h1>
       <p><strong>Question:</strong> Would you rather loose a hand or a foot?</p>
