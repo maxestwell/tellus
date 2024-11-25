@@ -37,25 +37,21 @@ export default {
       <TheNav />
     </header>
     <div class="submission">
-      <h1>Review Your Submission</h1>
-      <p><strong>Question:</strong> Would you rather loose a hand or a foot?</p>
-      <p><strong>Your Answer:</strong> {{ $route.query.answer }}</p>
-      <p><strong>Uploaded File:</strong> {{ file?.name || 'No file uploaded' }}</p>
-      <button @click="submitResponse">Submit</button>
-      <button @click="$router.push('/record')">Go Back</button>
+      <div class="writing">
+        <h1>Review Your Submission</h1>
+        <p><strong>Question:</strong> Would you rather loose a hand or a foot?</p>
+        <p><strong>Your Answer:</strong> {{ $route.query.answer }}</p>
+        <p><strong>Uploaded File:</strong> {{ file?.name || 'No file uploaded' }}</p>
+        <div class="button-choices">
+          <button @click="submitResponse">Submit</button>
+          <button @click="$router.push('/record')">Go Back</button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.views {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
-
 .submission {
   height: 100%;
   width: 100%;

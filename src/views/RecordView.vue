@@ -36,10 +36,13 @@ export default {
       <TheNav />
     </header>
     <div class="record">
-      <h1>Record Your Response</h1>
-      <p>Your answer: {{ $route.query.answer }}</p>
-
-      <button @click="goToSubmit">Next</button>
+      <div class="writing">
+        <h1>Record Your Response</h1>
+        <p>Your answer: {{ $route.query.answer }}</p>
+        <div class="button-choices">
+          <button @click="goToSubmit">Next</button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -47,14 +50,6 @@ export default {
 <style scoped></style>
 
 <style>
-.views {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
-
 .record {
   height: 100%;
   width: 100%;

@@ -22,36 +22,41 @@ const selectAnswer = (answer) => {
       <TheTitle :title="headerTitle" />
       <TheNav />
     </header>
-    <div class="question-page">
-      <div class="choices">
-        <div class="bcontent">
-          <h2>Would you rather lose a...</h2>
+    <div class="question-container">
+      <div class="question-page">
+        <div class="writing">
+          <h1>Would you rather lose a...</h1>
         </div>
-        <a class="button button1" @click="selectAnswer('a hand?!')">
+        <div class="choices">
+          <a class="button button1" @click="selectAnswer('a hand?!')">
+            <div class="bcontent">
+              <h1 class="choice">hand</h1>
+            </div>
+          </a>
           <div class="bcontent">
-            <p class="choice">hand 🖐️</p>
+            <h2>or a</h2>
           </div>
-        </a>
-        <div class="bcontent">
-          <h2>or a</h2>
+          <a class="button button2" @click="selectAnswer('a foot?!')">
+            <div class="bcontent">
+              <h1 class="choice">foot</h1>
+            </div>
+          </a>
         </div>
-        <a class="button button2" @click="selectAnswer('a foot?!')">
-          <div class="bcontent">
-            <p class="choice">foot 🦶</p>
-          </div>
-        </a>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.views {
+.writing {
+  padding: 0;
+}
+
+.question-container {
+  flex: 1;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+  width: 100%;
+  padding: 1em;
 }
 
 .question-page {
@@ -60,12 +65,11 @@ const selectAnswer = (answer) => {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%; /* Full viewport height */
 }
 
 .choices {
   display: grid;
-  grid-template-rows: 1fr 4fr 1fr 4fr;
+  grid-template-rows: 4fr 1fr 4fr;
   width: 100%;
   height: 100%;
 }
@@ -73,13 +77,13 @@ const selectAnswer = (answer) => {
 .button {
   background-color: #04aa6d; /* Green */
   border: none;
-  border-radius: 100%;
+  /* border-radius: 100%; */
   color: white;
   /* padding: 16px 32px; */
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  /* font-size: 16px; */
   /* margin: 4px 2px; */
   transition-duration: 0.4s;
   cursor: pointer;
@@ -91,20 +95,16 @@ const selectAnswer = (answer) => {
   border: 2px solid #000000;
 }
 
-.button1:hover {
-  background-color: #04aa6d;
+.button1:hover,
+.button2:hover {
+  background-color: #0033ff;
   color: white;
 }
 
 .button2 {
-  background-color: white;
+  background-color: #f2f2f2;
   color: black;
   border: 2px solid #000000;
-}
-
-.button2:hover {
-  background-color: #008cba;
-  color: white;
 }
 
 .bcontent {
@@ -115,7 +115,7 @@ const selectAnswer = (answer) => {
   height: 100%;
 }
 
-.choice {
+/* .choice {
   font-size: 48px;
-}
+} */
 </style>

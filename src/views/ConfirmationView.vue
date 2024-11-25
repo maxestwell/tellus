@@ -23,23 +23,20 @@ const selectAnswer = (answer) => {
       <TheNav />
     </header>
     <div class="confirmation">
-      <h1>Thank You!</h1>
-      <p>Your response has been submitted to the “Would You Rather?” Archive.</p>
-      <p>ALSO, here's a sticker to add to your profile!</p>
-      <button @click="$router.push('/')">Return Home</button>
+      <div class="writing">
+        <h1>Thank You!</h1>
+        <p>Your response has been submitted to the “Would You Rather?” Archive.</p>
+        <p>ALSO, here's a sticker to add to your profile!</p>
+        <img src="/tellus/images/sticker.png" alt="Sticker" />
+        <div class="button-choices">
+          <button @click="$router.push('/')">Return Home</button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.views {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
-
 .confirmation {
   height: 100%;
   width: 100%;
@@ -54,10 +51,10 @@ const selectAnswer = (answer) => {
   text-align: center;
 }
 
-button {
+/* button {
   margin: 10px;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
-}
+} */
 </style>

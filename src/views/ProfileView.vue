@@ -26,6 +26,7 @@ export default {
       backgroundImageUrl: '',
       profileImageUrl: '',
       stickerImageUrl: '',
+      location: '',
     }
   },
   created() {
@@ -38,6 +39,7 @@ export default {
       this.backgroundImageUrl = `/tellus/images${this.profile.backgroundImage}`
       this.profileImageUrl = `/tellus/images${this.profile.profileImage}`
       this.stickerImageUrl = `/tellus/images${this.profile.sticker}`
+      this.location = this.profile.location
     }
     // else {
     //   this.profile = {
@@ -70,25 +72,20 @@ export default {
       <div class="profileborder">
         <img :src="profileImageUrl" :alt="profile.profileImageAlt" class="profileimg" />
       </div>
-      <h1 :style="{ fontFamily: profile.font }">{{ profile.userName }}</h1>
-      <p>{{ profile.bio }}</p>
-      <div class="sticker">
-        <h2>stickers</h2>
-        <img :src="stickerImageUrl" :alt="profile.stickerAlt" class="stickerimg" />
+      <div class="writing">
+        <h1 :style="{ fontFamily: profile.font }">{{ profile.userName }}</h1>
+        <p>{{ location }}</p>
+        <p>{{ profile.bio }}</p>
+        <div class="sticker">
+          <h2>stickers</h2>
+          <img :src="stickerImageUrl" :alt="profile.stickerAlt" class="stickerimg" />
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.views {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
-
 img {
   max-width: 100%;
   object-fit: cover;

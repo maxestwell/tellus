@@ -22,6 +22,14 @@ import { RouterLink } from 'vue-router'
           About
         </HoverEffect>
       </RouterLink>
+      <RouterLink to="/publication">
+        <HoverEffect
+          defaultSettings="'wght' 700, 'BACK' 0, 'RECT' 0, 'ELSH' 4"
+          hoverSettings="'wght' 500, 'BACK' 700, 'RECT' 700, 'ELSH' 4"
+        >
+          >>>Publication<<<
+        </HoverEffect>
+      </RouterLink>
     </nav>
   </div>
 </template>

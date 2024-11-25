@@ -6,6 +6,7 @@
             {
                 "name": "archie",
                 "userName": "@versarchie",
+                "location": "Sydney, AUS",
                 "backgroundImage": "/cloudmtns.jpg",
                 "backgroundImageAlt": "Cloudy mountains",
                 "profileImage": "/hand.png",
@@ -24,6 +25,7 @@
             {
                 "name": "grace",
                 "userName": "@max_the_corolla",
+                "location": "Canberra, AUS",
                 "backgroundImage": "/cloudmtns.jpg",
                 "backgroundImageAlt": "Cloudy mountains",
                 "profileImage": "/hand.png",
@@ -42,6 +44,7 @@
             {
                 "name": "polly",
                 "userName": "@eggplant_polly",
+                "location": "Canberra, AUS",
                 "backgroundImage": "/cloudmtns.jpg",
                 "backgroundImageAlt": "Cloudy mountains",
                 "profileImage": "/ogre.png",
@@ -60,6 +63,7 @@
             {
                 "name": "tavi",
                 "userName": "@tacotelfer",
+                "location": "Canberra, AUS",
                 "backgroundImage": "/cloudmtns.jpg",
                 "backgroundImageAlt": "Cloudy mountains",
                 "profileImage": "/hand.png",
@@ -78,6 +82,7 @@
             {
                 "name": "tim",
                 "userName": "@a_bit_intimidated",
+                "location": "Canberra, AUS",
                 "backgroundImage": "/cloudmtns.jpg",
                 "backgroundImageAlt": "Cloudy mountains",
                 "profileImage": "/mask.png",
