@@ -1,5 +1,7 @@
 <script setup>
 import HoverEffect from '@/components/HoverEffect.vue'
+import { ref } from 'vue'
+import CustomModal from '@/components/CustomModal.vue' // Import CustomModal
 </script>
 
 <script>
@@ -18,6 +20,7 @@ export default {
       currentUserName: null,
       isHovered: false, // Step 1: Add hover state
       animationClass: '', // Add animation class state
+      showModal: false, // Add state for modal visibility
     }
   },
   created() {
@@ -100,6 +103,12 @@ export default {
     handleAfterLeave(el) {
       this.currentSoundLink = null // Ensure the link is removed after the fade-out
     },
+    openModal() {
+      this.showModal = true
+    },
+    closeModal() {
+      this.showModal = false
+    },
   },
 }
 </script>
@@ -136,6 +145,12 @@ export default {
       </div>
     </a>
   </div>
+  <button class="open-modal-button" @click="openModal"><h1>?</h1></button>
+  <CustomModal :visible="showModal" @close="closeModal" title="Modal Title">
+    <template #content>
+      <p>Modal content goes here.</p>
+    </template>
+  </CustomModal>
 </template>
 
 <style scoped>
@@ -156,8 +171,8 @@ a {
 }
 
 .profile-image {
-  width: 50px;
-  height: 50px;
+  width: 25px;
+  height: 25px;
   object-fit: cover;
 }
 
@@ -194,5 +209,22 @@ a {
   justify-content: center;
   flex-direction: column;
   height: 100%;
+}
+
+.open-modal-button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 4em; /* Set width */
+  height: 4em; /* Set height */
+  padding: 0; /* Remove padding */
+  border: none;
+  border-radius: 50%; /* Make it a circle */
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+.open-modal-button:hover {
+  background-color: #0056b3;
 }
 </style>

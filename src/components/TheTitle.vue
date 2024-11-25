@@ -32,7 +32,7 @@ defineProps({
   background-color: #0033ff;
   color: #f2f2f2;
   border-radius: 20em;
-  padding: 0px 50px;
+  padding: 0px 30px;
   text-align: center;
   width: fit-content;
 }

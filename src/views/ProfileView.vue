@@ -1,64 +1,41 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import TheTitle from '../components/TheTitle.vue'
 import TheNav from '../components/TheNav.vue'
+import profiles from '@/assets/data/sounds.json'
 
-const headerTitle = ref('Default Title')
+const headerTitle = ref('Default Title') // Default text
 
-onMounted(() => {
-  headerTitle.value = 'T'
+// Props setup
+const props = defineProps({
+  name: {
+    type: String,
+    required: true,
+  },
 })
-</script>
 
-<script>
-import profiles from '@/assets/data/sounds.json' // Same JSON file for both
+// Reactive profile and related data
+const profile = ref({})
+const backgroundImageUrl = ref('')
+const profileImageUrl = ref('')
+const stickerImageUrl = ref('')
+const location = ref('')
 
-export default {
-  props: {
-    name: {
-      type: String,
-      required: true,
-    },
-  },
-  data() {
-    return {
-      profile: {},
-      backgroundImageUrl: '',
-      profileImageUrl: '',
-      stickerImageUrl: '',
-      location: '',
+// Fetch the profile data
+onMounted(() => {
+  const profileData = profiles.find((p) => p.profile.some((profile) => profile.name === props.name))
+  if (profileData) {
+    const foundProfile = profileData.profile.find((profile) => profile.name === props.name)
+    if (foundProfile) {
+      profile.value = foundProfile
+      headerTitle.value = foundProfile.userName // Update headerTitle dynamically
+      backgroundImageUrl.value = `/tellus/images${foundProfile.backgroundImage}`
+      profileImageUrl.value = `/tellus/images${foundProfile.profileImage}`
+      stickerImageUrl.value = `/tellus/images${foundProfile.sticker}`
+      location.value = foundProfile.location
     }
-  },
-  created() {
-    // Find the profile by name
-    const profileData = profiles.find((p) =>
-      p.profile.some((profile) => profile.name === this.name),
-    )
-    if (profileData) {
-      this.profile = profileData.profile.find((profile) => profile.name === this.name)
-      this.backgroundImageUrl = `/tellus/images${this.profile.backgroundImage}`
-      this.profileImageUrl = `/tellus/images${this.profile.profileImage}`
-      this.stickerImageUrl = `/tellus/images${this.profile.sticker}`
-      this.location = this.profile.location
-    }
-    // else {
-    //   this.profile = {
-    //     name: 'Unknown',
-    //     backgroundImage: '/images/cloudmtns.jpg',
-    //     backgroundImageAlt: 'Default background image',
-    //     profileImage: '/images/hand.png',
-    //     profileImageAlt: 'Default profile image',
-    //     sticker: '/images/default-sticker.png',
-    //     stickerAlt: 'Default sticker',
-    //     font: 'Arial, sans-serif',
-    //     bio: 'This profile does not exist.',
-    //   }
-    //   this.backgroundImageUrl = new URL('/public/images/cloudmtns.jpg', import.meta.url).href
-    //   this.profileImageUrl = new URL('/public/images/hand.png', import.meta.url).href
-    //   this.stickerImageUrl = new URL('/public/images/default-sticker.png', import.meta.url).href
-    // }
-  },
-}
+  }
+})
 </script>
 
 <template>
@@ -69,11 +46,12 @@ export default {
     </header>
     <img :src="backgroundImageUrl" :alt="profile.backgroundImageAlt" class="bgimg" />
     <div class="profile">
-      <div class="profileborder">
-        <img :src="profileImageUrl" :alt="profile.profileImageAlt" class="profileimg" />
-      </div>
       <div class="writing">
-        <h1 :style="{ fontFamily: profile.font }">{{ profile.userName }}</h1>
+        <div class="profileborder">
+          <img :src="profileImageUrl" :alt="profile.profileImageAlt" class="profileimg" />
+        </div>
+
+        <!-- <h1 :style="{ fontFamily: profile.font }">{{ profile.userName }}</h1> -->
         <p>{{ location }}</p>
         <p>{{ profile.bio }}</p>
         <div class="sticker">
