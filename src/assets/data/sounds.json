@@ -38,6 +38,25 @@
         ]
     },
     {
+        "src": "max.mp3",
+        "link": "/profile/max",
+        "profile": [
+            {
+                "name": "max",
+                "userName": "@cannon",
+                "location": "Canberra, AUS",
+                "backgroundImage": "/cloudmtns.jpg",
+                "backgroundImageAlt": "Cloudy mountains",
+                "profileImage": "/ogre.png",
+                "profileImageAlt": "Ogre",
+                "font": "'Courier New', monospace",
+                "bio": "Jane is an artist who enjoys painting landscapes and reading novels.",
+                "sticker": "/sticker.png",
+                "stickerAlt": "Sticker"
+            }
+        ]
+    },
+    {
         "src": "polly.mp3",
         "link": "/profile/polly",
         "profile": [
