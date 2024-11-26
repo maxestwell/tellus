@@ -1,176 +1,207 @@
 <script setup>
-import GridParent from '../components/GridParent.vue'
+import HoverEffect from '@/components/HoverEffect.vue'
+import { ref } from 'vue'
+import CustomModal from '@/components/CustomModal.vue' // Import CustomModal
 </script>
 
 <script>
-import sound1 from '@/assets/recordings/archie.mp3'
-import sound2 from '@/assets/recordings/grace.mp3'
-import sound3 from '@/assets/recordings/polly.mp3'
-import sound4 from '@/assets/recordings/tavi.mp3'
-import sound5 from '@/assets/recordings/tim.mp3'
+import soundsData from '@/assets/data/sounds.json'
+
+const audioFiles = import.meta.glob('@/assets/recordings/*.mp3')
 
 export default {
   data() {
     return {
-      soundsGroup1: [
-        { src: sound1, link: '/profile' },
-        { src: sound2, link: '/profile' },
-      ],
-      soundsGroup2: [
-        { src: sound3, link: '/profile' },
-        { src: sound4, link: '/profile' },
-        { src: sound5, link: '/profile' },
-      ],
+      sounds: [],
       audio: null,
       isPlaying: false,
-      lastPlayedIndex: { 1: null, 2: null }, // Track last played index for each group
-      currentSoundLink: null, // Store the link for the currently playing sound
-      currentGroup: null, // Track the current playing group
+      lastPlayedIndex: null,
+      currentSoundLink: null,
+      currentUserName: null,
+      isHovered: false, // Step 1: Add hover state
+      animationClass: '', // Add animation class state
+      showModal: false, // Add state for modal visibility
     }
   },
+  created() {
+    this.sounds = soundsData.map((sound) => {
+      const audioModule = audioFiles[`/src/assets/recordings/${sound.src}`]
+      if (audioModule) {
+        return { ...sound, src: audioModule } // Store function
+      } else {
+        console.warn(`Audio file not found for ${sound.src}`)
+        return { ...sound, src: null }
+      }
+    })
+  },
   methods: {
-    togglePlayPause(group) {
-      if (this.isPlaying && this.currentGroup === group) {
+    togglePlayPause() {
+      if (this.isPlaying) {
         this.stopSound()
       } else {
-        this.playRandomSound(group)
+        this.playRandomSound()
       }
     },
-    playRandomSound(group) {
-      // Choose the appropriate sound group
-      const sounds = group === 1 ? this.soundsGroup1 : this.soundsGroup2
+    playRandomSound() {
       let randomIndex
-
-      // Ensure a new random sound is selected (not the same as last played)
       do {
-        randomIndex = Math.floor(Math.random() * sounds.length)
-      } while (randomIndex === this.lastPlayedIndex[group])
+        randomIndex = Math.floor(Math.random() * this.sounds.length)
+      } while (randomIndex === this.lastPlayedIndex)
 
-      // Update the last played index for this group
-      this.lastPlayedIndex[group] = randomIndex
-
-      // Stop any currently playing sound
-      this.stopSound()
-
-      // Get the selected sound and link
-      const selectedSound = sounds[randomIndex]
-      this.audio = new Audio(selectedSound.src)
-      this.audio.play()
-      this.isPlaying = true
-      this.currentGroup = group
-
-      // Set the link for the currently playing sound
+      const selectedSound = this.sounds[randomIndex]
+      this.lastPlayedIndex = randomIndex
       this.currentSoundLink = selectedSound.link
+      this.currentUserName = selectedSound.profile[0].userName
 
-      // Reset isPlaying when the audio finishes
-      this.audio.onended = () => {
-        this.isPlaying = false
-        this.currentSoundLink = null // Hide link when audio ends
-        this.currentGroup = null
+      if (selectedSound.src) {
+        selectedSound.src().then((module) => {
+          this.audio = new Audio(module.default)
+          this.audio
+            .play()
+            .then(() => {
+              this.isPlaying = true
+              this.handleAudioPlay()
+              this.audio.addEventListener('ended', this.resetState) // Add event listener
+            })
+            .catch((error) => {
+              console.error('Error playing sound:', error)
+            })
+        })
+      } else {
+        console.error('No audio source found for:', selectedSound)
       }
     },
     stopSound() {
-      // Pause and reset the current audio if it exists
       if (this.audio) {
         this.audio.pause()
         this.audio.currentTime = 0
         this.isPlaying = false
-        this.currentSoundLink = null // Hide link when stopped
-        this.currentGroup = null
+        this.handleAudioPause()
+        this.audio.removeEventListener('ended', this.resetState) // Remove event listener
+        this.currentSoundLink = null
       }
+    },
+    resetState() {
+      this.isPlaying = false
+      this.currentSoundLink = null
+      this.currentUserName = null
+      this.audio = null
+    },
+    handleAudioPlay() {
+      this.animationClass = 'fade-in'
+    },
+    handleAudioPause() {
+      this.animationClass = 'fade-out'
+      setTimeout(() => {
+        this.animationClass = '' // Clear the animation class
+        this.currentSoundLink = null // Clear the link after the animation ends
+      }) // Match the fade-out animation duration
+    },
+    handleBeforeLeave(el) {
+      // Optional: Add any pre-leave logic
+    },
+    handleAfterLeave(el) {
+      this.currentSoundLink = null // Ensure the link is removed after the fade-out
+    },
+    openModal() {
+      this.showModal = true
+    },
+    closeModal() {
+      this.showModal = false
     },
   },
 }
 </script>
 
 <template>
-  <div class="random">
-    <div class="choices">
-      <a class="button button1" @click="togglePlayPause(1)">
-        <div class="bcontent">
-          <p class="choice">hand 🖐️</p>
-          <p class="status">{{ isPlaying && currentGroup === 1 ? 'Stop ⏹️' : 'Play ▶️' }}</p>
-          <!-- Display link if a sound is playing and currentGroup is 1 -->
-          <div class="sound-link-container">
-            <div v-if="currentSoundLink && currentGroup === 1" class="sound-link">
-              <router-link :to="currentSoundLink">Profile</router-link>
-            </div>
-          </div>
-        </div>
-      </a>
-
+  <div
+    class="random"
+    :class="{ hovered: isHovered, playing: isPlaying, 'not-playing': !isPlaying }"
+    @mouseenter="isHovered = true"
+    @mouseleave="isHovered = false"
+  >
+    <a class="button" @click="togglePlayPause">
       <div class="bcontent">
-        <h2>I'd rather lose a...</h2>
-      </div>
-
-      <a class="button button2" @click="togglePlayPause(2)">
-        <div class="bcontent">
-          <p class="choice">foot 🦶</p>
-          <p class="status">{{ isPlaying && currentGroup === 2 ? 'Stop ⏹️' : 'Play ▶️' }}</p>
-          <!-- Display link if a sound is playing and currentGroup is 2 -->
-          <div class="sound-link-container">
-            <div v-if="currentSoundLink && currentGroup === 2" class="sound-link">
-              <router-link :to="currentSoundLink">Profile</router-link>
-            </div>
-          </div>
+        <div class="image-grid">
+          <img
+            v-for="(sound, index) in sounds"
+            :key="index"
+            :src="`/tellus/images${sound.profile[0].profileImage}`"
+            :alt="sound.profile[0].profileImageAlt"
+            class="profile-image"
+          />
         </div>
-      </a>
-    </div>
+
+        <!-- Display link if a sound is playing -->
+        <div class="sound-link-container">
+          <h1>
+            <a>
+              <router-link v-if="currentSoundLink" :to="currentSoundLink" :class="animationClass">
+                {{ currentUserName }}
+              </router-link>
+            </a>
+          </h1>
+        </div>
+      </div>
+    </a>
   </div>
+  <button class="open-modal-button" @click="openModal"><h1>?</h1></button>
+  <CustomModal :visible="showModal" @close="closeModal" title="Help!!!">
+    <template #content>
+      <p>Click anywhere on screen</p>
+      <p>Also click on the username!...</p>
+    </template>
+  </CustomModal>
 </template>
 
 <style scoped>
+/* Profile Image Grid */
+
+a {
+  text-decoration: none;
+  color: #ffffff;
+}
+.image-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.profile-image {
+  width: 25px;
+  height: 25px;
+  object-fit: cover;
+}
+
 .random {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%; /* Full viewport height */
+  height: inherit;
+  transition: background-color 0.5s ease;
 }
 
-.choices {
-  display: grid;
-  grid-template-rows: 6fr 1fr 6fr;
-  gap: 1em;
-  width: 100%;
-  height: 100%;
+.random.playing {
+  background-color: #0033ff;
+}
+
+.random.not-playing {
+  background-color: none;
 }
 
 .button {
-  background-color: #04aa6d; /* Green */
-  border: none;
-  color: white;
-  /* padding: 16px 32px; */
+  width: 100%;
+  height: 100%;
+  position: relative;
+  color: #ffffff;
   text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  /* margin: 4px 2px; */
-  transition-duration: 0.4s;
   cursor: pointer;
-}
-
-.button1 {
-  background-color: white;
-  color: black;
-  border: 2px solid #000000;
-}
-
-.button1:hover {
-  background-color: #04aa6d;
-  color: white;
-}
-
-.button2 {
-  background-color: white;
-  color: black;
-  border: 2px solid #000000;
-}
-
-.button2:hover {
-  background-color: #008cba;
-  color: white;
 }
 
 .bcontent {
@@ -181,39 +212,20 @@ export default {
   height: 100%;
 }
 
-.choice {
-  font-size: 48px;
-}
-
-.stop-button {
-  font-family: 'gridlite-pe-variable', sans-serif;
-  font-variation-settings:
-    'wght' 900,
-    'BACK' 0,
-    'RECT' 0,
-    'ELSH' 4;
-  padding: 10px 20px;
-  font-size: 16px;
+.open-modal-button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 4em; /* Set width */
+  height: 4em; /* Set height */
+  padding: 0; /* Remove padding */
+  border: none;
+  border-radius: 50%; /* Make it a circle */
+  background-color: #007bff;
+  color: white;
   cursor: pointer;
-  margin: 5px;
-  background-color: #f2f2f2;
-  color: black;
-  text-align: center;
-  user-select: none;
 }
-
-.stop-button.disabled {
-  cursor: not-allowed;
-  opacity: 0.3;
-}
-
-.sound-link-container {
-  position: relative;
-}
-
-.sound-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.open-modal-button:hover {
+  background-color: #0056b3;
 }
 </style>

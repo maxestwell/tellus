@@ -10,19 +10,48 @@ onMounted(() => {
 })
 </script>
 
+<script>
+export default {
+  name: 'RecordPage',
+  data() {
+    return {
+      file: null,
+    }
+  },
+  methods: {
+    handleFileUpload(event) {
+      this.file = event.target.files[0]
+    },
+    goToSubmit() {
+      this.$router.push({ path: '/submit', query: { answer: this.$route.query.answer } })
+    },
+  },
+}
+</script>
+
 <template>
   <div class="views">
     <header>
       <TheTitle :title="headerTitle" />
       <TheNav />
     </header>
-    <div class="about">
-      <h1>Tellus</h1>
-      <h3>
-        A curated audio archive of micro-interviews based around the 'Would you rather…?' concept.
-      </h3>
+    <div class="record">
+      <div class="writing">
+        <h1>Record Your Response</h1>
+        <p>Your answer: {{ $route.query.answer }}</p>
+        <div class="button-choices">
+          <button @click="goToSubmit">Next</button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped></style>
+
+<style>
+.record {
+  height: 100%;
+  width: 100%;
+}
+</style>
