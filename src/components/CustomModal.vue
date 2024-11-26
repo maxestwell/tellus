@@ -40,8 +40,9 @@ const handleOverlayClick = () => {
 
 .modal-content {
   background: white;
-  padding: 20px;
-  border-radius: 5px;
+  padding: 2rem;
+  width: 50%;
+  /* border-radius: 5px; */
   text-align: center;
 }
 

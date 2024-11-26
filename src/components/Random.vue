@@ -146,9 +146,10 @@ export default {
     </a>
   </div>
   <button class="open-modal-button" @click="openModal"><h1>?</h1></button>
-  <CustomModal :visible="showModal" @close="closeModal" title="Modal Title">
+  <CustomModal :visible="showModal" @close="closeModal" title="Help!!!">
     <template #content>
-      <p>Modal content goes here.</p>
+      <p>Click anywhere on screen</p>
+      <p>Also click on the username!...</p>
     </template>
   </CustomModal>
 </template>

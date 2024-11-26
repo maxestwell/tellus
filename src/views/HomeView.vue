@@ -12,14 +12,7 @@ const doNotShow = ref(false)
 // Modal display logic
 onMounted(() => {
   headerTitle.value = 'Tellus'
-  if (!doNotShow.value) {
-    showModal.value = true
-  }
 })
-
-const closeModal = () => {
-  showModal.value = false
-}
 </script>
 
 <template>
@@ -33,15 +26,6 @@ const closeModal = () => {
     <div class="random-container">
       <Random />
     </div>
-    <!-- <CustomModal v-if="showModal" title="important!!!" :visible="showModal" @close="closeModal">
-      <template #content>
-        <p>Have you read the <router-link to="/about" class="link">about</router-link> page?</p>
-        <div class="checkbox-container">
-          <input type="checkbox" id="do-not-show" v-model="doNotShow" />
-          <label for="do-not-show">Do not show again</label>
-        </div>
-      </template>
-    </CustomModal> -->
   </div>
 </template>
 
