@@ -7,12 +7,12 @@
                 "name": "archie",
                 "userName": "@versarchie",
                 "location": "Sydney, AUS",
-                "backgroundImage": "/cloudmtns.jpg",
+                "backgroundImage": "/bg1.png",
                 "backgroundImageAlt": "Cloudy mountains",
                 "profileImage": "/hand.png",
                 "profileImageAlt": "Hand",
                 "font": "'Courier New', monospace",
-                "bio": "Jane is an artist who enjoys painting landscapes and reading novels.",
+                "bio": "YARRRRRR woohooooooooooo",
                 "sticker": "/sticker.png",
                 "stickerAlt": "Sticker"
             }
@@ -26,12 +26,12 @@
                 "name": "grace",
                 "userName": "@max_the_corolla",
                 "location": "Canberra, AUS",
-                "backgroundImage": "/cloudmtns.jpg",
+                "backgroundImage": "/bg2.png",
                 "backgroundImageAlt": "Cloudy mountains",
                 "profileImage": "/hand.png",
                 "profileImageAlt": "Hand",
                 "font": "'Courier New', monospace",
-                "bio": "Jane is an artist who enjoys painting landscapes and reading novels.",
+                "bio": "music is my life",
                 "sticker": "/sticker.png",
                 "stickerAlt": "Sticker"
             }
@@ -45,12 +45,12 @@
                 "name": "max",
                 "userName": "@cannon",
                 "location": "Canberra, AUS",
-                "backgroundImage": "/cloudmtns.jpg",
+                "backgroundImage": "/bg3.jpg",
                 "backgroundImageAlt": "Cloudy mountains",
                 "profileImage": "/ogre.png",
                 "profileImageAlt": "Ogre",
                 "font": "'Courier New', monospace",
-                "bio": "Jane is an artist who enjoys painting landscapes and reading novels.",
+                "bio": "what da ell",
                 "sticker": "/sticker.png",
                 "stickerAlt": "Sticker"
             }
@@ -64,12 +64,12 @@
                 "name": "polly",
                 "userName": "@eggplant_polly",
                 "location": "Canberra, AUS",
-                "backgroundImage": "/cloudmtns.jpg",
+                "backgroundImage": "/bg4.jpg",
                 "backgroundImageAlt": "Cloudy mountains",
                 "profileImage": "/ogre.png",
                 "profileImageAlt": "Ogre",
                 "font": "'Courier New', monospace",
-                "bio": "Jane is an artist who enjoys painting landscapes and reading novels.",
+                "bio": "eggcellent",
                 "sticker": "/sticker.png",
                 "stickerAlt": "Sticker"
             }
@@ -83,12 +83,12 @@
                 "name": "tavi",
                 "userName": "@tacotelfer",
                 "location": "Canberra, AUS",
-                "backgroundImage": "/cloudmtns.jpg",
+                "backgroundImage": "/bg5.jpg",
                 "backgroundImageAlt": "Cloudy mountains",
                 "profileImage": "/hand.png",
                 "profileImageAlt": "Hand",
                 "font": "'Courier New', monospace",
-                "bio": "Jane is an artist who enjoys painting landscapes and reading novels.",
+                "bio": "run run run run run run",
                 "sticker": "/sticker.png",
                 "stickerAlt": "Sticker"
             }
@@ -102,12 +102,12 @@
                 "name": "tim",
                 "userName": "@a_bit_intimidated",
                 "location": "Canberra, AUS",
-                "backgroundImage": "/cloudmtns.jpg",
+                "backgroundImage": "/bg6.jpg",
                 "backgroundImageAlt": "Cloudy mountains",
                 "profileImage": "/mask.png",
                 "profileImageAlt": "Mask",
                 "font": "'Courier New', monospace",
-                "bio": "Jane is an artist who enjoys painting landscapes and reading novels.",
+                "bio": "i wish i was a fish",
                 "sticker": "/sticker.png",
                 "stickerAlt": "Sticker"
             }

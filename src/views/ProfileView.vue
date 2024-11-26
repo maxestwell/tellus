@@ -74,6 +74,12 @@ img {
   width: 100%;
 }
 
+p,
+h2 {
+  color: #fff;
+  mix-blend-mode: difference;
+}
+
 .bgimg {
   width: 100%;
   height: 100%;
