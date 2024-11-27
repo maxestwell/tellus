@@ -37,13 +37,13 @@ body {
   height: 100%;
 }
 
-button {
+/* button {
   padding: 1em;
   border: 2px solid #000000;
   border-radius: 20em;
   color: #000000;
   background-color: #f2f2f2;
-}
+} */
 
 header {
   background-color: #f2f2f2;

@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue'
 import TheTitle from '../components/TheTitle.vue'
 import TheNav from '../components/TheNav.vue'
 import Intro from '../components/Intro.vue'
+import Text from '../components/Text.vue'
 
 const headerTitle = ref('Default Title')
 
@@ -13,20 +14,17 @@ onMounted(() => {
 
 <template>
   <div class="views">
-    <header>
-      <TheTitle :title="headerTitle" />
-      <TheNav />
-    </header>
     <div class="intro">
-      <h2>
-        <Intro />
-      </h2>
+      <Intro />
+      <Text />
     </div>
   </div>
 </template>
 
 <style scoped>
-.intro {
-  height: 100%;
+.views {
+  background-color: #f9f9f9;
+  justify-content: center;
+  /* transform: translate(0, -50%); */
 }
 </style>
