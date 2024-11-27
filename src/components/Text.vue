@@ -7,12 +7,13 @@ import { RouterLink } from 'vue-router'
     <div class="text">
       <p>Lose a</p>
       <RouterLink to="/about">
-        <button>foot</button>
+        <button>hand</button>
       </RouterLink>
       <p>or a</p>
       <RouterLink to="/about">
-        <button>hand</button>
+        <button>foot</button>
       </RouterLink>
+      <p>?</p>
     </div>
   </div>
 </template>
