@@ -41,6 +41,14 @@ const isActiveRoute = (paths) => {
           >>>Publication<<<
         </HoverEffect>
       </RouterLink>
+      <RouterLink to="/intro">
+        <HoverEffect
+          defaultSettings="'wght' 700, 'BACK' 0, 'RECT' 0, 'ELSH' 4"
+          hoverSettings="'wght' 500, 'BACK' 700, 'RECT' 700, 'ELSH' 4"
+        >
+          intro
+        </HoverEffect>
+      </RouterLink>
     </nav>
   </div>
 </template>
