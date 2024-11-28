@@ -17,31 +17,29 @@ const selectAnswer = (answer) => {
 </script>
 
 <template>
-  <div class="views">
-    <header>
-      <TheTitle :title="headerTitle" />
-      <TheNav />
-    </header>
-    <div class="question-container">
-      <div class="question-page">
-        <div class="writing">
-          <h1>Would you rather lose a...</h1>
-        </div>
-        <div class="choices">
-          <a class="button button1" @click="selectAnswer('a hand?!')">
-            <div class="bcontent">
-              <h1 class="choice">hand</h1>
-            </div>
-          </a>
+  <header>
+    <TheTitle :title="headerTitle" />
+    <TheNav />
+  </header>
+  <div class="question-container">
+    <div class="question-page">
+      <div class="writing">
+        <h1>Would you rather lose a...</h1>
+      </div>
+      <div class="choices">
+        <a class="button button1" @click="selectAnswer('a hand?!')">
           <div class="bcontent">
-            <h2>or a</h2>
+            <h1 class="choice">hand</h1>
           </div>
-          <a class="button button2" @click="selectAnswer('a foot?!')">
-            <div class="bcontent">
-              <h1 class="choice">foot</h1>
-            </div>
-          </a>
+        </a>
+        <div class="bcontent">
+          <h2>or a</h2>
         </div>
+        <a class="button button2" @click="selectAnswer('a foot?!')">
+          <div class="bcontent">
+            <h1 class="choice">foot</h1>
+          </div>
+        </a>
       </div>
     </div>
   </div>

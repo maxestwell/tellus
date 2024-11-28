@@ -1,49 +1,26 @@
 @import './base.css';
 
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-/* body {
-  min-height: 100vh;
-} */
-
-#app {
+/* #app {
   max-width: 1280px;
   margin: 0 auto;
   font-weight: normal;
-  height: 100%;
+  height: 100vh;
   width: 100%;
-}
 
-.views {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
+  justify-content: flex-start;
   align-items: center;
-  min-height: 100vh;
-  height: 100%;
-}
-
-/* .about {
-  background-image: url('@/assets/images/home_square.jpg');
-  background-size: cover;
-  background-position: center;
 } */
 
-#app > div {
-  height: 100%;
+#app {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
 }
-
-/* button {
-  padding: 1em;
-  border: 2px solid #000000;
-  border-radius: 20em;
-  color: #000000;
-  background-color: #f2f2f2;
-} */
 
 header {
   background-color: #f2f2f2;
@@ -56,25 +33,12 @@ header {
   padding: 1rem 0 0 0;
 }
 
-/* header > div {
-  padding: 1em 0em;
-} */
-
 header div {
   display: flex;
   width: 100%;
   align-items: center;
   justify-content: center;
 }
-
-/* a {
-  font-family: 'adapter-mono-pe-variable', sans-serif;
-  font-variation-settings:
-    'wght' 500,
-    'slnt' -13,
-    'ital' 0,
-    'BORD' 300;
-} */
 
 .writing {
   padding: 1em;
@@ -108,28 +72,44 @@ h3 {
     'BORD' 300;
 }
 
-p {
-  font-family: 'adapter-mono-pe-variable', sans-serif;
+h1,
+p,
+a,
+button {
+  /* all: unset; */
+  /* font-family: 'adapter-mono-pe-variable', sans-serif;
   font-variation-settings:
     'wght' 400,
     'slnt' 0,
     'ital' 0,
-    'BORD' 300;
+    'BORD' 300; */
+  font-family: 'sigurd-variable', sans-serif;
+  font-variation-settings:
+    'wght' 300,
+    'slnt' 0;
 }
 
-h1,
-h2,
-a {
+h1::before,
+p::before,
+a::before,
+button::before {
+  content: ''; /* Empty content for spacing */
+  display: block; /* Make it a block element */
+  height: 0.2em; /* Set the height */
+}
+
+/* h1,
+h2 {
   font-family: 'gridlite-pe-variable', sans-serif;
   font-variation-settings:
     'wght' 700,
     'BACK' 0,
     'RECT' 0,
     'ELSH' 4;
-}
+} */
 
 h1 {
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   margin: 0;
 }
 
@@ -138,8 +118,20 @@ h2 {
   margin: 0;
 }
 
-a,
-.green {
+/* button {
+  all: unset;
+  background-color: #efefef;
+  color: var(--vt-c-black);
+  padding: 1px 6px;
+  outline: 1px solid #666666;
+  border-radius: 2px;
+  cursor: pointer;
+  font-family: 'Xanh Mono', monospace;
+  font-style: normal;
+  font-size: 16px;
+} */
+
+a {
   text-decoration: none;
   color: #0033ff;
   /* transition: 0.4s; */

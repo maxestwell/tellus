@@ -16,16 +16,14 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="views">
-    <header>
-      <div class="title-container">
-        <TheTitle :title="headerTitle" />
-      </div>
-      <TheNav />
-    </header>
-    <div class="random-container">
-      <Random />
+  <header>
+    <div class="title-container">
+      <TheTitle :title="headerTitle" />
     </div>
+    <TheNav />
+  </header>
+  <div class="random-container">
+    <Random />
   </div>
 </template>
 

@@ -3,22 +3,28 @@ export default {
   data() {
     return {
       zIndexCounter: 100,
-      windows: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }],
+      windows: [],
     }
   },
+  created() {
+    this.windows = Object.keys(this.$slots).map((name, index) => ({
+      id: index + 1,
+      name,
+    }))
+  },
   mounted() {
-    this.initializeDraggableWindows()
+    this.$nextTick(() => {
+      this.initializeDraggableWindows()
+    })
   },
   methods: {
     initializeDraggableWindows() {
-      const windows = this.$refs.draggableWindows
-      console.log('Draggable windows:', windows) // Debug log
+      const windows = this.$refs.draggableWindows.querySelectorAll('.draggable')
       if (!windows || windows.length === 0) {
         console.error('No draggable windows found')
         return
       }
       windows.forEach((window) => {
-        console.log('Initializing window:', window) // Debug log
         window.addEventListener('mousedown', (e) => {
           this.zIndexCounter++
           window.style.zIndex = this.zIndexCounter
@@ -49,29 +55,27 @@ export default {
         })
       })
     },
-    closeWindow(event) {
-      event.target.closest('.window').style.display = 'none'
+    closeWindow(index) {
+      this.windows.splice(index, 1)
     },
   },
 }
 </script>
 
 <template>
-  <div class="windows">
-    <div class="window-container">
+  <div class="windows-container">
+    <div class="windows" ref="draggableWindows">
       <div
         v-for="(window, index) in windows"
         :key="window.id"
-        :class="`window window${index + 1} draggable`"
-        :ref="'draggableWindows'"
+        class="window draggable"
         :style="{ zIndex: 100 - index }"
       >
         <div class="top-window">
-          <button @click="closeWindow">close</button>
+          <button @click="closeWindow(index)">Close</button>
         </div>
         <div class="window-content">
-          <!-- Slot for content -->
-          <slot :name="`window-${window.id}`"></slot>
+          <slot :name="window.name"></slot>
         </div>
       </div>
     </div>
@@ -79,33 +83,37 @@ export default {
 </template>
 
 <style scoped>
-button {
-  font-size: 1.5rem;
-  text-transform: lowercase;
-  font-family: 'Xanh Mono', monospace;
+.windows-container {
+  position: absolute;
+  /* width: 100%;
+  height: 100%; */
 }
 
-.window-container {
+.windows {
+  /* width: 100%;
+  height: 100%; */
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
+  align-items: center;
 }
 
 .window {
-  position: absolute;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
   background-color: #f0f0f0;
   outline: 1px solid #cccccc;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   width: 400px;
+  min-height: 160px;
 }
 
 .top-window {
   background-color: #cccccc;
   display: flex;
   justify-content: flex-end;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-radius: 5px 5px 0px 0px;
   cursor: move;
   /* padding: 5px; */
 }
@@ -114,20 +122,26 @@ button {
   background-color: #ff0000;
   color: #ffffff;
   border: none;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-radius: 5px 5px 0px 5px;
   font-size: 1rem;
 }
 
 .window-content {
   padding: 10px;
   overflow: auto;
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
 }
 
-h1 {
-  font-size: 1.5rem;
+h1,
+button {
+  /* font-size: 1.5rem; */
   text-transform: uppercase;
-  font-family: 'Xanh Mono', monospace;
+  /* font-family: 'Xanh Mono', monospace; */
+}
+
+button {
+  text-transform: lowercase;
 }
 </style>

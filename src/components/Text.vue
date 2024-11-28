@@ -6,39 +6,41 @@ import { RouterLink } from 'vue-router'
   <div class="text-container">
     <div class="text">
       <p>Lose a</p>
-      <RouterLink to="/about">
-        <button>hand</button>
-      </RouterLink>
+      <RouterLink class="button" to="/about">hand</RouterLink>
       <p>or a</p>
-      <RouterLink to="/about">
-        <button>foot</button>
-      </RouterLink>
+      <RouterLink class="button" to="/about">foot</RouterLink>
       <p>?</p>
     </div>
   </div>
 </template>
 
 <style scoped>
-/* global styling */
-
-button,
-p {
-  font-family: 'Xanh Mono', monospace;
-  font-style: normal;
-  font-size: 16px;
+p,
+a {
+  font-size: 1.5rem;
 }
 
-button {
-  font-size: 1rem;
+.button {
+  background-color: #efefef;
+  color: var(--vt-c-black);
+  padding: 1px 6px;
+  outline: 1px solid #666666;
+  border-radius: 2px;
+  cursor: pointer;
+  font-family: 'sigurd-variable', sans-serif;
+  font-variation-settings:
+    'wght' 300,
+    'slnt' 0;
 }
 
 .text {
-  height: 100%;
-  position: static;
   display: flex;
-  gap: 20px;
-  align-items: center;
   justify-content: center;
-  /* margin-top: 20px; */
+  align-items: center;
+  gap: 20px;
 }
+
+/* .text {
+  display: inline-flex;
+} */
 </style>

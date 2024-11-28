@@ -30,18 +30,16 @@ export default {
 </script>
 
 <template>
-  <div class="views">
-    <header>
-      <TheTitle :title="headerTitle" />
-      <TheNav />
-    </header>
-    <div class="record">
-      <div class="writing">
-        <h1>Record Your Response</h1>
-        <p>Your answer: {{ $route.query.answer }}</p>
-        <div class="button-choices">
-          <button @click="goToSubmit">Next</button>
-        </div>
+  <header>
+    <TheTitle :title="headerTitle" />
+    <TheNav />
+  </header>
+  <div class="record">
+    <div class="writing">
+      <h1>Record Your Response</h1>
+      <p>Your answer: {{ $route.query.answer }}</p>
+      <div class="button-choices">
+        <button @click="goToSubmit">Next</button>
       </div>
     </div>
   </div>
