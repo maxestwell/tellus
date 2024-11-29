@@ -10,58 +10,46 @@ const isActiveRoute = (paths) => {
 </script>
 
 <template>
-  <div class="wrapper">
-    <nav>
-      <RouterLink
-        to="/question"
-        :class="{
-          'router-link-active': isActiveRoute(['/question', '/record', '/submit', '/confirmation']),
-        }"
+  <nav>
+    <RouterLink to="/about">
+      <HoverEffect
+        class="nav-text"
+        defaultSettings="'wght' 700, 'BACK' 0, 'RECT' 0, 'ELSH' 4"
+        hoverSettings="'wght' 500, 'BACK' 700, 'RECT' 700, 'ELSH' 4"
       >
-        <HoverEffect
-          defaultSettings="'wght' 700, 'BACK' 0, 'RECT' 0, 'ELSH' 4"
-          hoverSettings="'wght' 500, 'BACK' 700, 'RECT' 700, 'ELSH' 4"
-        >
-          Submit
-        </HoverEffect>
-      </RouterLink>
-      <RouterLink to="/about">
-        <HoverEffect
-          defaultSettings="'wght' 700, 'BACK' 0, 'RECT' 0, 'ELSH' 4"
-          hoverSettings="'wght' 500, 'BACK' 700, 'RECT' 700, 'ELSH' 4"
-        >
-          About
-        </HoverEffect>
-      </RouterLink>
-      <RouterLink to="/publication">
-        <HoverEffect
-          defaultSettings="'wght' 700, 'BACK' 0, 'RECT' 0, 'ELSH' 4"
-          hoverSettings="'wght' 500, 'BACK' 700, 'RECT' 700, 'ELSH' 4"
-        >
-          >>>Publication<<<
-        </HoverEffect>
-      </RouterLink>
-      <RouterLink to="/intro">
-        <HoverEffect
-          defaultSettings="'wght' 700, 'BACK' 0, 'RECT' 0, 'ELSH' 4"
-          hoverSettings="'wght' 500, 'BACK' 700, 'RECT' 700, 'ELSH' 4"
-        >
-          intro
-        </HoverEffect>
-      </RouterLink>
-    </nav>
-  </div>
+        About
+      </HoverEffect>
+    </RouterLink>
+    <RouterLink to="/publication">
+      <HoverEffect
+        class="nav-text"
+        defaultSettings="'wght' 700, 'BACK' 0, 'RECT' 0, 'ELSH' 4"
+        hoverSettings="'wght' 500, 'BACK' 700, 'RECT' 700, 'ELSH' 4"
+      >
+        >>>Publication<<<
+      </HoverEffect>
+    </RouterLink>
+  </nav>
 </template>
 
 <style scoped>
+.nav-text {
+  font-family: 'gridlite-pe-variable', sans-serif;
+  font-variation-settings:
+    'wght' 700,
+    'BACK' 0,
+    'RECT' 0,
+    'ELSH' 4;
+}
+
 nav {
-  display: flex;
-  align-items: flex-end;
+  padding: 1rem 0;
+  background-color: var(--color-background-mute);
 }
 
 nav a {
+  /* color: var(--color-background-mute); */
   display: inline-block;
-  padding: 0 1rem;
 }
 
 .router-link-active {

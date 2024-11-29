@@ -1,6 +1,14 @@
 <script setup>
 import TheTitle from '@/components/TheTitle.vue'
 import WindowScript from '@/components/WindowScript.vue'
+
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+const selectAnswer = (answer) => {
+  router.push({ path: '/record', query: { answer } })
+}
 </script>
 
 <template>
@@ -9,31 +17,25 @@ import WindowScript from '@/components/WindowScript.vue'
       <h1>Welcome to Tellus</h1>
     </template>
     <template v-slot:window-2>
-      <h1>This website invites you to explore the "Would you rather" question.</h1>
+      <h1>This website invites you to explore the "Would You Rather" concept.</h1>
     </template>
     <template v-slot:window-3>
       <h1>So...</h1>
     </template>
     <template v-slot:window-4>
-      <h1>Would you rather</h1>
+      <h1>Would you rather...</h1>
     </template>
   </WindowScript>
 </template>
 
 <style scoped>
 h1 {
-  /* font-size: 2rem; */
+  font-size: 1rem;
   text-transform: uppercase;
-  /* font-family: 'Xanh Mono', monospace; */
 }
-/* .flexe {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  width: 100%;
-} */
 
-h1 > div {
-  text-transform: capitalize;
+p,
+.text button {
+  font-size: 1rem;
 }
 </style>

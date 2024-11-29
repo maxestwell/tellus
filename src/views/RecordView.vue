@@ -32,24 +32,15 @@ export default {
 <template>
   <header>
     <TheTitle :title="headerTitle" />
-    <TheNav />
   </header>
-  <div class="record">
-    <div class="writing">
-      <h1>Record Your Response</h1>
-      <p>Your answer: {{ $route.query.answer }}</p>
-      <div class="button-choices">
-        <button @click="goToSubmit">Next</button>
-      </div>
+  <div class="writing">
+    <h1>Record Your Response</h1>
+    <p>{{ $route.query.answer }}</p>
+    <div class="button-choices">
+      <button>record</button>
+      <button @click="goToSubmit">next</button>
     </div>
   </div>
 </template>
 
 <style scoped></style>
-
-<style>
-.record {
-  height: 100%;
-  width: 100%;
-}
-</style>

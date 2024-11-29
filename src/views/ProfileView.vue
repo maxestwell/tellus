@@ -41,7 +41,6 @@ onMounted(() => {
 <template>
   <header>
     <TheTitle :title="headerTitle" />
-    <TheNav />
   </header>
   <img :src="backgroundImageUrl" :alt="profile.backgroundImageAlt" class="bgimg" />
   <div class="profile">

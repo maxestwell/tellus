@@ -1,17 +1,24 @@
 <script setup>
 import { ref } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
+import TheNav from '@/components/TheNav.vue'
 </script>
 
 <template>
   <router-view />
+  <TheNav class="nav-container" />
 </template>
 
 <style scoped>
-header {
+.nav-container {
+  font-size: 1.5rem;
+  position: fixed;
+  bottom: 0;
   width: 100%;
-  line-height: 1.5;
-  /* max-height: 100vh; */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 1000;
 }
 
 .logo {

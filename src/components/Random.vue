@@ -145,17 +145,23 @@ export default {
       </div>
     </a>
   </div>
-  <button class="open-modal-button" @click="openModal"><h1>?</h1></button>
+  <!-- <button class="open-modal-button" @click="openModal"><h1>?</h1></button>
   <CustomModal :visible="showModal" @close="closeModal" title="Help!!!">
     <template #content>
       <p>Click anywhere on screen</p>
       <p>Also click on the username!...</p>
     </template>
-  </CustomModal>
+  </CustomModal> -->
 </template>
 
 <style scoped>
 /* Profile Image Grid */
+
+.button::before {
+  content: ''; /* Empty content for spacing */
+  display: block; /* Make it a block element */
+  height: 0em; /* Set the height */
+}
 
 a {
   text-decoration: none;

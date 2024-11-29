@@ -19,7 +19,6 @@ const selectAnswer = (answer) => {
 <template>
   <header>
     <TheTitle :title="headerTitle" />
-    <TheNav />
   </header>
   <div class="question-container">
     <div class="question-page">

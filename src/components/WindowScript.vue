@@ -72,7 +72,7 @@ export default {
         :style="{ zIndex: 100 - index }"
       >
         <div class="top-window">
-          <button @click="closeWindow(index)">Close</button>
+          <button @click="closeWindow(index)">close</button>
         </div>
         <div class="window-content">
           <slot :name="window.name"></slot>
@@ -85,8 +85,12 @@ export default {
 <style scoped>
 .windows-container {
   position: absolute;
-  /* width: 100%;
-  height: 100%; */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .windows {
@@ -101,11 +105,11 @@ export default {
   position: fixed;
   display: flex;
   flex-direction: column;
-  background-color: #f0f0f0;
+  background-color: var(--color-background-soft);
   outline: 1px solid #cccccc;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  width: 400px;
+  width: 300px;
   min-height: 160px;
 }
 
@@ -115,7 +119,6 @@ export default {
   justify-content: flex-end;
   border-radius: 5px 5px 0px 0px;
   cursor: move;
-  /* padding: 5px; */
 }
 
 .top-window button {
@@ -123,7 +126,8 @@ export default {
   color: #ffffff;
   border: none;
   border-radius: 5px 5px 0px 5px;
-  font-size: 1rem;
+  font-size: 0.8rem;
+  cursor: pointer;
 }
 
 .window-content {
@@ -134,11 +138,8 @@ export default {
   flex-grow: 1;
 }
 
-h1,
-button {
-  /* font-size: 1.5rem; */
+h1 {
   text-transform: uppercase;
-  /* font-family: 'Xanh Mono', monospace; */
 }
 
 button {
