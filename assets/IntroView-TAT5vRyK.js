@@ -1,1 +1,0 @@
-import{_ as a,r as o,o as s,c as r,a as e,b as c,W as n,T as _}from"./index-Qt7jJzao.js";const l={class:"intro"},d={__name:"IntroView",setup(i){const t=o("Default Title");return s(()=>{t.value="Tellus"}),(p,u)=>(c(),r("div",l,[e(n),e(_)]))}},m=a(d,[["__scopeId","data-v-94ed0388"]]);export{m as default};
