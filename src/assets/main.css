@@ -56,6 +56,7 @@ h3 {
 }
 
 h1,
+h2,
 p,
 a {
   /* all: unset; */
@@ -87,6 +88,7 @@ button {
 }
 
 h1::before,
+h2::before,
 p::before,
 a::before,
 button::before {

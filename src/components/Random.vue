@@ -61,6 +61,7 @@ export default {
             .then(() => {
               this.isPlaying = true
               this.handleAudioPlay()
+              this.increaseZIndex() // Increase z-index when audio starts playing
               this.audio.addEventListener('ended', this.resetState) // Add event listener
             })
             .catch((error) => {
@@ -79,6 +80,7 @@ export default {
         this.handleAudioPause()
         this.audio.removeEventListener('ended', this.resetState) // Remove event listener
         this.currentSoundLink = null
+        this.resetState()
       }
     },
     resetState() {
@@ -86,6 +88,7 @@ export default {
       this.currentSoundLink = null
       this.currentUserName = null
       this.audio = null
+      this.resetZIndex() // Reset z-index when audio stops playing
     },
     handleAudioPlay() {
       this.animationClass = 'fade-in'
@@ -108,6 +111,15 @@ export default {
     },
     closeModal() {
       this.showModal = false
+    },
+    increaseZIndex() {
+      const element = this.$el // Assuming you want to increase the z-index of the root element
+      const currentZIndex = parseInt(window.getComputedStyle(element).zIndex, 10) || 0
+      element.style.zIndex = currentZIndex + 1
+    },
+    resetZIndex() {
+      const element = this.$el // Assuming you want to reset the z-index of the root element
+      element.style.zIndex = 0
     },
   },
 }
@@ -135,28 +147,19 @@ export default {
         <!-- Display link if a sound is playing -->
         <div class="sound-link-container">
           <h1>
-            <a>
-              <router-link v-if="currentSoundLink" :to="currentSoundLink" :class="animationClass">
-                {{ currentUserName }}
-              </router-link>
-            </a>
+            <router-link v-if="currentSoundLink" :to="currentSoundLink" :class="animationClass">
+              {{ currentUserName }}
+            </router-link>
           </h1>
         </div>
       </div>
     </a>
   </div>
-  <!-- <button class="open-modal-button" @click="openModal"><h1>?</h1></button>
-  <CustomModal :visible="showModal" @close="closeModal" title="Help!!!">
-    <template #content>
-      <p>Click anywhere on screen</p>
-      <p>Also click on the username!...</p>
-    </template>
-  </CustomModal> -->
 </template>
 
 <style scoped>
-/* Profile Image Grid */
-
+h1::before,
+p::before,
 .button::before {
   content: ''; /* Empty content for spacing */
   display: block; /* Make it a block element */
@@ -207,7 +210,7 @@ a {
   position: relative;
   color: #ffffff;
   text-align: center;
-  cursor: pointer;
+  cursor: help;
 }
 
 .bcontent {
@@ -218,20 +221,20 @@ a {
   height: 100%;
 }
 
-.open-modal-button {
+/* .open-modal-button {
   position: absolute;
   bottom: 20px;
   right: 20px;
-  width: 4em; /* Set width */
-  height: 4em; /* Set height */
-  padding: 0; /* Remove padding */
+  width: 4em;
+  height: 4em;
+  padding: 0;
   border: none;
-  border-radius: 50%; /* Make it a circle */
+  border-radius: 50%;
   background-color: #007bff;
   color: white;
   cursor: pointer;
 }
 .open-modal-button:hover {
   background-color: #0056b3;
-}
+} */
 </style>

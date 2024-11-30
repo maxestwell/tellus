@@ -14,9 +14,9 @@ const selectAnswer = (answer) => {
       <div class="text-container">
         <div class="text">
           <p class="item1">Lose a</p>
-          <button class="item2" @click="selectAnswer('a hand?!')">hand</button>
+          <button class="item2" @click="selectAnswer('a hand')">hand</button>
           <p class="item3">or a</p>
-          <button class="item4" @click="selectAnswer('a foot?!')">foot</button>
+          <button class="item4" @click="selectAnswer('a foot')">foot</button>
           <p class="item5">?</p>
         </div>
       </div>
@@ -37,40 +37,34 @@ button {
   font-size: 0.5rem;
 }
 
-/* button {
-  all: unset;
-  font-size: 0.5rem;
-  background-color: #efefef;
-  color: var(--vt-c-black);
-  padding: 1px 6px;
-  border: 1px solid #666666;
-  border-radius: 2px;
-  cursor: pointer;
-  font-family: 'sigurd-variable', sans-serif;
-  font-variation-settings:
-    'wght' 300,
-    'slnt' 0;
-} */
-
 .text-choices {
   position: absolute;
   /* height: 100%; */
   width: 100%;
   /* height: 0; */
   display: grid;
-  grid: auto-flow / repeat(2, 1fr);
-  gap: 1rem;
-  padding: 1rem;
+  grid: auto-flow / repeat(3, 1fr);
+  gap: 2rem;
+  padding: 2rem;
   /* padding-bottom: 100%; */
+}
+
+@media (max-width: 425px) {
+  .text-choices {
+    gap: 1rem;
+    padding: 1rem;
+    grid: auto-flow / repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 320px) {
+  .text {
+    flex-direction: column;
+  }
 }
 
 @media (min-width: 1024px) {
   .text-choices {
-    position: absolute;
-    /* height: 100%; */
-    width: 100%;
-    /* height: 0; */
-    display: grid;
     grid: auto-flow / repeat(6, 1fr);
   }
 }

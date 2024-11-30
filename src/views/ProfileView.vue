@@ -43,19 +43,17 @@ onMounted(() => {
     <TheTitle :title="headerTitle" />
   </header>
   <img :src="backgroundImageUrl" :alt="profile.backgroundImageAlt" class="bgimg" />
-  <div class="profile">
-    <div class="writing">
-      <div class="profileborder">
-        <img :src="profileImageUrl" :alt="profile.profileImageAlt" class="profileimg" />
-      </div>
+  <div class="writing">
+    <div class="profileborder">
+      <img :src="profileImageUrl" :alt="profile.profileImageAlt" class="profileimg" />
+    </div>
 
-      <!-- <h1 :style="{ fontFamily: profile.font }">{{ profile.userName }}</h1> -->
-      <p>{{ location }}</p>
-      <p>{{ profile.bio }}</p>
-      <div class="sticker">
-        <h2>stickers</h2>
-        <img :src="stickerImageUrl" :alt="profile.stickerAlt" class="stickerimg" />
-      </div>
+    <!-- <h1 :style="{ fontFamily: profile.font }">{{ profile.userName }}</h1> -->
+    <h2>{{ location }}</h2>
+    <p>{{ profile.bio }}</p>
+    <div class="sticker">
+      <h2>stickers</h2>
+      <img :src="stickerImageUrl" :alt="profile.stickerAlt" class="stickerimg" />
     </div>
   </div>
 </template>

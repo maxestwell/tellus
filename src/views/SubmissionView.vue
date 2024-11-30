@@ -10,7 +10,7 @@ onMounted(() => {
 })
 </script>
 
-<script>
+<!-- <script>
 export default {
   name: 'SubmissionPage',
   data() {
@@ -28,7 +28,7 @@ export default {
     },
   },
 }
-</script>
+</script> -->
 
 <template>
   <header>
@@ -38,7 +38,7 @@ export default {
     <div class="writing">
       <h1>Review Your Submission</h1>
       <p><strong>Question:</strong> Would you rather loose a hand or a foot?</p>
-      <p><strong>Your Answer:</strong> {{ $route.query.answer }}</p>
+      <p><strong>Your Answer:</strong>{{ $route.query.answer }}</p>
       <div class="button-choices">
         <button @click="$router.push('/record')">Go Back</button>
         <button @click="submitResponse">Submit</button>
